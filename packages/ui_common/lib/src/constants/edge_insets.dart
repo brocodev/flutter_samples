@@ -1,0 +1,96 @@
+// ignore_for_file:public_member_api_docs
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+EdgeInsets edgeInsetsA4 = EdgeInsets.all(4.sp);
+EdgeInsets edgeInsetsA8 = EdgeInsets.all(8.sp);
+EdgeInsets edgeInsetsA12 = EdgeInsets.all(12.sp);
+EdgeInsets edgeInsetsA16 = EdgeInsets.all(16.sp);
+EdgeInsets edgeInsetsA20 = EdgeInsets.all(20.sp);
+EdgeInsets edgeInsetsA24 = EdgeInsets.all(24.sp);
+EdgeInsets edgeInsetsA28 = EdgeInsets.all(28.sp);
+EdgeInsets edgeInsetsA32 = EdgeInsets.all(32.sp);
+EdgeInsets edgeInsetsA36 = EdgeInsets.all(36.sp);
+EdgeInsets edgeInsetsA40 = EdgeInsets.all(40.sp);
+EdgeInsets edgeInsetsA44 = EdgeInsets.all(44.sp);
+EdgeInsets edgeInsetsA48 = EdgeInsets.all(48.sp);
+EdgeInsets edgeInsetsA52 = EdgeInsets.all(52.sp);
+EdgeInsets edgeInsetsA56 = EdgeInsets.all(56.sp);
+EdgeInsets edgeInsetsA60 = EdgeInsets.all(60.sp);
+EdgeInsets edgeInsetsA64 = EdgeInsets.all(64.sp);
+
+EdgeInsets edgeInsetsT4 = EdgeInsets.only(top: 4.sp);
+EdgeInsets edgeInsetsT8 = EdgeInsets.only(top: 8.sp);
+EdgeInsets edgeInsetsT12 = EdgeInsets.only(top: 12.sp);
+EdgeInsets edgeInsetsT16 = EdgeInsets.only(top: 16.sp);
+EdgeInsets edgeInsetsT20 = EdgeInsets.only(top: 20.sp);
+EdgeInsets edgeInsetsT24 = EdgeInsets.only(top: 24.sp);
+EdgeInsets edgeInsetsT28 = EdgeInsets.only(top: 28.sp);
+EdgeInsets edgeInsetsT32 = EdgeInsets.only(top: 32.sp);
+EdgeInsets edgeInsetsT36 = EdgeInsets.only(top: 36.sp);
+EdgeInsets edgeInsetsT40 = EdgeInsets.only(top: 40.sp);
+EdgeInsets edgeInsetsT44 = EdgeInsets.only(top: 44.sp);
+
+EdgeInsets edgeInsetsB4 = EdgeInsets.only(bottom: 4.sp);
+EdgeInsets edgeInsetsB8 = EdgeInsets.only(bottom: 8.sp);
+EdgeInsets edgeInsetsB12 = EdgeInsets.only(bottom: 12.sp);
+EdgeInsets edgeInsetsB16 = EdgeInsets.only(bottom: 16.sp);
+EdgeInsets edgeInsetsB20 = EdgeInsets.only(bottom: 20.sp);
+EdgeInsets edgeInsetsB24 = EdgeInsets.only(bottom: 24.sp);
+EdgeInsets edgeInsetsB28 = EdgeInsets.only(bottom: 28.sp);
+EdgeInsets edgeInsetsB32 = EdgeInsets.only(bottom: 32.sp);
+EdgeInsets edgeInsetsB36 = EdgeInsets.only(bottom: 36.sp);
+EdgeInsets edgeInsetsB40 = EdgeInsets.only(bottom: 40.sp);
+EdgeInsets edgeInsetsB44 = EdgeInsets.only(bottom: 44.sp);
+
+EdgeInsets edgeInsetsL4 = EdgeInsets.only(left: 4.sp);
+EdgeInsets edgeInsetsL8 = EdgeInsets.only(left: 8.sp);
+EdgeInsets edgeInsetsL12 = EdgeInsets.only(left: 12.sp);
+EdgeInsets edgeInsetsL16 = EdgeInsets.only(left: 16.sp);
+EdgeInsets edgeInsetsL20 = EdgeInsets.only(left: 20.sp);
+EdgeInsets edgeInsetsL24 = EdgeInsets.only(left: 24.sp);
+EdgeInsets edgeInsetsL28 = EdgeInsets.only(left: 28.sp);
+EdgeInsets edgeInsetsL32 = EdgeInsets.only(left: 32.sp);
+EdgeInsets edgeInsetsL36 = EdgeInsets.only(left: 36.sp);
+EdgeInsets edgeInsetsL40 = EdgeInsets.only(left: 40.sp);
+EdgeInsets edgeInsetsL44 = EdgeInsets.only(left: 44.sp);
+
+EdgeInsets edgeInsetsR4 = EdgeInsets.only(right: 4.sp);
+EdgeInsets edgeInsetsR8 = EdgeInsets.only(right: 8.sp);
+EdgeInsets edgeInsetsR12 = EdgeInsets.only(right: 12.sp);
+EdgeInsets edgeInsetsR16 = EdgeInsets.only(right: 16.sp);
+EdgeInsets edgeInsetsR20 = EdgeInsets.only(right: 20.sp);
+EdgeInsets edgeInsetsR24 = EdgeInsets.only(right: 24.sp);
+EdgeInsets edgeInsetsR28 = EdgeInsets.only(right: 28.sp);
+EdgeInsets edgeInsetsR32 = EdgeInsets.only(right: 32.sp);
+EdgeInsets edgeInsetsR36 = EdgeInsets.only(right: 36.sp);
+EdgeInsets edgeInsetsR40 = EdgeInsets.only(right: 40.sp);
+EdgeInsets edgeInsetsR44 = EdgeInsets.only(right: 44.sp);
+
+EdgeInsets edgeInsetsV4 = EdgeInsets.symmetric(vertical: 4.h);
+EdgeInsets edgeInsetsV8 = EdgeInsets.symmetric(vertical: 8.h);
+EdgeInsets edgeInsetsV12 = EdgeInsets.symmetric(vertical: 12.h);
+EdgeInsets edgeInsetsV16 = EdgeInsets.symmetric(vertical: 16.h);
+EdgeInsets edgeInsetsV20 = EdgeInsets.symmetric(vertical: 20.h);
+EdgeInsets edgeInsetsV24 = EdgeInsets.symmetric(vertical: 24.h);
+EdgeInsets edgeInsetsV28 = EdgeInsets.symmetric(vertical: 28.h);
+EdgeInsets edgeInsetsV32 = EdgeInsets.symmetric(vertical: 32.h);
+EdgeInsets edgeInsetsV36 = EdgeInsets.symmetric(vertical: 36.h);
+EdgeInsets edgeInsetsV40 = EdgeInsets.symmetric(vertical: 40.h);
+EdgeInsets edgeInsetsV44 = EdgeInsets.symmetric(vertical: 44.h);
+
+EdgeInsets edgeInsetsH4 = EdgeInsets.symmetric(horizontal: 4.w);
+EdgeInsets edgeInsetsH8 = EdgeInsets.symmetric(horizontal: 8.w);
+EdgeInsets edgeInsetsH12 = EdgeInsets.symmetric(horizontal: 12.w);
+EdgeInsets edgeInsetsH16 = EdgeInsets.symmetric(horizontal: 16.w);
+EdgeInsets edgeInsetsH20 = EdgeInsets.symmetric(horizontal: 20.w);
+EdgeInsets edgeInsetsH24 = EdgeInsets.symmetric(horizontal: 24.w);
+EdgeInsets edgeInsetsH28 = EdgeInsets.symmetric(horizontal: 28.w);
+EdgeInsets edgeInsetsH32 = EdgeInsets.symmetric(horizontal: 32.w);
+EdgeInsets edgeInsetsH36 = EdgeInsets.symmetric(horizontal: 36.w);
+EdgeInsets edgeInsetsH40 = EdgeInsets.symmetric(horizontal: 40.w);
+EdgeInsets edgeInsetsH44 = EdgeInsets.symmetric(horizontal: 44.w);
+EdgeInsets edgeInsetsH48 = EdgeInsets.symmetric(horizontal: 48.w);
+EdgeInsets edgeInsetsH52 = EdgeInsets.symmetric(horizontal: 52.w);
+EdgeInsets edgeInsetsH56 = EdgeInsets.symmetric(horizontal: 56.w);
+EdgeInsets edgeInsetsH60 = EdgeInsets.symmetric(horizontal: 60.w);

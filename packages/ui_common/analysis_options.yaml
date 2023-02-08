@@ -1,0 +1,12 @@
+include: package:very_good_analysis/analysis_options.2.4.0.yaml
+linter:
+  rules:
+    public_member_api_docs: false
+    avoid_implementing_value_types: false
+    flutter_style_todos: false
+    invalid_annotation_target: false
+    sort_pub_dependencies: false
+analyzer:
+  strong-mode:
+    implicit-casts: true
+    implicit-dynamic: true
