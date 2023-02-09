@@ -21,18 +21,23 @@ abstract class SHTheme {
         fontWeight: FontWeight.w500,
         color: SHColors.textColor,
       ),
+      headline2: GoogleFonts.buda(
+        fontSize: 60.sp,
+        color: SHColors.textColor,
+      ),
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
       backgroundColor: Colors.transparent,
     ),
+    iconTheme: const IconThemeData(color: SHColors.textColor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.transparent,
       elevation: 0,
       selectedIconTheme: IconThemeData(size: 40.sp),
       unselectedIconTheme: IconThemeData(size: 40.sp),
-      selectedItemColor: SHColors.unselectedColor,
-      unselectedItemColor: SHColors.unselectedColor,
+      selectedItemColor: SHColors.hintcolor,
+      unselectedItemColor: SHColors.hintcolor,
       selectedLabelStyle: GoogleFonts.montserrat(
         fontSize: 12.sp,
         fontWeight: FontWeight.w700,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_samples/core/constants/icons.dart';
 import 'package:flutter_samples/src/presentation/widgets/linear_gradient_container.dart';
 import 'package:flutter_samples/src/presentation/widgets/page_view_indicators.dart';
+import 'package:flutter_samples/src/presentation/widgets/room_card.dart';
 import 'package:ui_common/ui_common.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -54,21 +55,22 @@ class _HomeScreenState extends State<HomeScreen> {
         body: SafeArea(
           child: Column(
             children: [
-              gap32,
+              gap24,
               Text('SELECT A ROOM', style: context.bodyText1),
               gap32,
               Expanded(
                 child: PageView.builder(
                   controller: controller,
+                  itemCount: 5,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: edgeInsetsH16,
-                      child: const Placeholder(),
+                      padding: edgeInsetsH16.copyWith(bottom: 24.h),
+                      child: const RoomCard(),
                     );
                   },
                 ),
               ),
-              gap48,
+              gap20,
               ValueListenableBuilder<double>(
                 valueListenable: pageNotifier,
                 builder: (_, value, __) =>
@@ -78,30 +80,33 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(SHIcons.lock),
+        bottomNavigationBar: Padding(
+          padding: edgeInsetsA20.copyWith(top: 0),
+          child: BottomNavigationBar(
+            items: [
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: edgeInsetsA8,
+                  child: const Icon(SHIcons.lock),
+                ),
+                label: 'UNLOCK',
               ),
-              label: 'UNLOCK',
-            ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(SHIcons.home),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: edgeInsetsA8,
+                  child: const Icon(SHIcons.home),
+                ),
+                label: 'MAIN',
               ),
-              label: 'MAIN',
-            ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(SHIcons.settings),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: edgeInsetsA8,
+                  child: const Icon(SHIcons.settings),
+                ),
+                label: 'SETTINGS',
               ),
-              label: 'SETTINGS',
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

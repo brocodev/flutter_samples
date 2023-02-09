@@ -74,7 +74,7 @@ class _Dot extends StatelessWidget {
       width: 6.w,
       height: 6.w,
       decoration: const BoxDecoration(
-        color: SHColors.unselectedColor,
+        color: SHColors.hintcolor,
         shape: BoxShape.circle,
       ),
     );
