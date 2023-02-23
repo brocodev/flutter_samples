@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               gap24,
-              Text('SELECT A ROOM', style: context.bodyText1),
+              Text('SELECT A ROOM', style: context.bodyLarge),
               gap32,
               Expanded(
                 child: PageView.builder(

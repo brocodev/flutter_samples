@@ -6,23 +6,31 @@ import 'package:ui_common/ui_common.dart';
 abstract class SHTheme {
   static ThemeData dark = ThemeData(
     textTheme: TextTheme(
-      bodyText1: GoogleFonts.montserrat(
+      bodyLarge: GoogleFonts.montserrat(
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
         color: SHColors.textColor,
       ),
-      bodyText2: GoogleFonts.montserrat(
+      bodyMedium: GoogleFonts.montserrat(
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
         color: SHColors.textColor,
       ),
-      caption: GoogleFonts.montserrat(
+      bodySmall: GoogleFonts.montserrat(
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
         color: SHColors.textColor,
       ),
-      headline2: GoogleFonts.buda(
+      displayLarge: GoogleFonts.buda(
         fontSize: 60.sp,
+        color: SHColors.textColor,
+      ),
+      displayMedium: GoogleFonts.buda(
+        fontSize: 50.sp,
+        color: SHColors.textColor,
+      ),
+      displaySmall: GoogleFonts.buda(
+        fontSize: 40.sp,
         color: SHColors.textColor,
       ),
     ),
@@ -36,8 +44,8 @@ abstract class SHTheme {
       elevation: 0,
       selectedIconTheme: IconThemeData(size: 40.sp),
       unselectedIconTheme: IconThemeData(size: 40.sp),
-      selectedItemColor: SHColors.hintcolor,
-      unselectedItemColor: SHColors.hintcolor,
+      selectedItemColor: SHColors.hintColor,
+      unselectedItemColor: SHColors.hintColor,
       selectedLabelStyle: GoogleFonts.montserrat(
         fontSize: 12.sp,
         fontWeight: FontWeight.w700,

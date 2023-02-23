@@ -12,7 +12,7 @@ class RoomCard extends StatelessWidget {
   BoxDecoration get _roomCardDecoration {
     return BoxDecoration(
       borderRadius: borderRadiusA12,
-      color: SHColors.hintcolor,
+      color: SHColors.hintColor,
       boxShadow: const [
         BoxShadow(
           color: Colors.black12,
@@ -105,8 +105,8 @@ class _RoomTitle extends StatelessWidget {
                     child: Text(
                       'LIVING ROOM',
                       maxLines: 1,
-                      style:
-                          context.headline2.copyWith(color: SHColors.textColor),
+                      style: context.displayMedium
+                          .copyWith(color: SHColors.textColor),
                     ),
                   ),
                 ),
