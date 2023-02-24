@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/core/constants/icons.dart';
 import 'package:flutter_samples/core/theme/colors.dart';
+import 'package:flutter_samples/src/presentation/widgets/shimmer_arrows.dart';
 import 'package:ui_common/ui_common.dart';
 
 var url =
@@ -36,7 +37,7 @@ class RoomCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const _AnimatedArrows(),
+              const ShimmerArrows(),
               gap24,
               Container(
                 margin: edgeInsetsB16,
@@ -51,33 +52,6 @@ class RoomCard extends StatelessWidget {
           ),
         )
       ],
-    );
-  }
-}
-
-class _AnimatedArrows extends StatelessWidget {
-  const _AnimatedArrows({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ShaderMask(
-      shaderCallback: (rect) => const LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          Colors.white,
-          Colors.white10,
-        ],
-      ).createShader(rect),
-      child: Column(
-        children: const [
-          Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
-          Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
-          Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
-        ],
-      ),
     );
   }
 }
