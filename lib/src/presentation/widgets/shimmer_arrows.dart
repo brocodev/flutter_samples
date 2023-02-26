@@ -37,19 +37,19 @@ class _ShimmerArrowsState extends State<ShimmerArrows>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: _controller,
-        builder: (_, __) {
-          return ShaderMask(
-            shaderCallback: (bounds) => gradient.createShader(bounds),
-            child: Column(
-              children: const [
-                Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
-                Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
-                Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
-              ],
-            ),
-          );
-        });
+      animation: _controller,
+      builder: (_, child) => ShaderMask(
+        shaderCallback: (bounds) => gradient.createShader(bounds),
+        child: child,
+      ),
+      child: Column(
+        children: const [
+          Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
+          Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
+          Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
+        ],
+      ),
+    );
   }
 }
 

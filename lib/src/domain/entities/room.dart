@@ -1,6 +1,7 @@
 class Room {
   Room({
     required this.name,
+    required this.imageUrl,
     required this.temperature,
     required this.airHumidity,
     required this.roomLights,
@@ -9,6 +10,7 @@ class Room {
   });
 
   final String name;
+  final String imageUrl;
   final double temperature;
   final double airHumidity;
   final RoomLights roomLights;

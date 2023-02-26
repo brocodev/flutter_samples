@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return LinearGradientContainer(
+    return LightedBackground(
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -49,34 +49,48 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {},
               icon: const Icon(SHIcons.search),
             ),
-            space12,
+            spaceH12,
           ],
         ),
         body: SafeArea(
           child: Column(
             children: [
-              gap24,
+              spaceV24,
               Text('SELECT A ROOM', style: context.bodyLarge),
-              gap32,
+              spaceV32,
               Expanded(
-                child: PageView.builder(
-                  controller: controller,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: edgeInsetsH16.copyWith(bottom: 24.h),
-                      child: const RoomCard(),
-                    );
-                  },
+                child: ValueListenableBuilder<double>(
+                  valueListenable: pageNotifier,
+                  builder: (_, value, __) => PageView.builder(
+                    controller: controller,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: 5,
+                    itemBuilder: (__, index) {
+                      const urls = [
+                        'https://cdn1.coppel.com/images/catalog/pm/4467263-1.jpg',
+                        'https://media.houseandgarden.co.uk/photos/637637c2e4eb0449205a261c/4:3/w_2000,h_1500,c_limit/Shot-04_068_RT.jpg',
+                        'https://mueblesvizcaya.com.mx/wp-content/uploads/2021/01/30KENES00-COMEDOR-KENA-P6.jpg',
+                        'https://cdn.shopify.com/s/files/1/2217/4155/products/bali-3-amb_1400x.png?v=1661114773',
+                        'https://m.media-amazon.com/images/I/715hLONUQOL._AC_SL1500_.jpg'
+                      ];
+                      return Padding(
+                        padding: edgeInsetsH16.copyWith(bottom: 24.h),
+                        child: RoomCard(
+                          percent: (value - index),
+                          imageUrl: urls[index],
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
-              gap20,
+              spaceV20,
               ValueListenableBuilder<double>(
                 valueListenable: pageNotifier,
                 builder: (_, value, __) =>
                     PageViewIndicators(length: 5, currentPercentIndex: value),
               ),
-              gap32,
+              spaceV32,
             ],
           ),
         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/core/theme/colors.dart';
 
-class LinearGradientContainer extends StatelessWidget {
-  const LinearGradientContainer({
+class LightedBackground extends StatelessWidget {
+  const LightedBackground({
     Key? key,
     required this.child,
   }) : super(key: key);

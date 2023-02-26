@@ -25,7 +25,7 @@ class PageViewIndicators extends StatelessWidget {
             children: [
               for (int i = 0; i < length; i++) ...[
                 const _Dot(),
-                space16,
+                spaceH16,
               ],
             ],
           ),

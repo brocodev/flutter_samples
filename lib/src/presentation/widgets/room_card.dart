@@ -1,14 +1,17 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/core/constants/icons.dart';
 import 'package:flutter_samples/core/theme/colors.dart';
 import 'package:flutter_samples/src/presentation/widgets/shimmer_arrows.dart';
 import 'package:ui_common/ui_common.dart';
 
-var url =
-    'https://bajio.dico.com.mx/media/catalog/product/cache/e5313a059d82e47a0dd0c73b13afb6be/s/a/sala-moderna-redwood-iii-gris-decorada-8.jpg';
-
 class RoomCard extends StatelessWidget {
-  const RoomCard({Key? key}) : super(key: key);
+  const RoomCard({Key? key, required this.percent, required this.imageUrl})
+      : super(key: key);
+
+  final double percent;
+  final String imageUrl;
 
   BoxDecoration get _roomCardDecoration {
     return BoxDecoration(
@@ -16,21 +19,41 @@ class RoomCard extends StatelessWidget {
       color: SHColors.hintColor,
       boxShadow: const [
         BoxShadow(
-          color: Colors.black12,
+          color: Colors.black26,
           blurRadius: 12,
           offset: Offset(-7, 7),
         ),
       ],
+      image: DecorationImage(
+        image: NetworkImage(imageUrl),
+        fit: BoxFit.cover,
+        colorFilter:
+            const ColorFilter.mode(Colors.black26, BlendMode.colorBurn),
+        alignment: Alignment(lerpDouble(.3, -.3, percent)!, 0),
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
+      fit: StackFit.expand,
       children: [
-        Container(
+        DecoratedBox(
           decoration: _roomCardDecoration,
           child: const _RoomTitle(),
+        ),
+        DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: borderRadiusA12,
+            gradient: const RadialGradient(
+              radius: 2,
+              colors: [
+                Colors.transparent,
+                Colors.black,
+              ],
+            ),
+          ),
         ),
         Align(
           alignment: Alignment.bottomCenter,
@@ -38,11 +61,11 @@ class RoomCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const ShimmerArrows(),
-              gap24,
+              spaceV24,
               Container(
                 margin: edgeInsetsB16,
-                height: 6.h,
-                width: 0.4.sw,
+                height: 4.h,
+                width: 0.35.sw,
                 decoration: BoxDecoration(
                   color: SHColors.textColor,
                   borderRadius: borderRadiusA8,
@@ -66,7 +89,7 @@ class _RoomTitle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        gap8,
+        spaceV8,
         Flexible(
           child: Row(
             children: [
@@ -93,11 +116,11 @@ class _RoomTitle extends StatelessWidget {
                   icon: const Icon(SHIcons.camera, color: SHColors.textColor),
                 ),
               ),
-              space8,
+              spaceV8,
             ],
           ),
         ),
-        gap12,
+        spaceV12,
       ],
     );
   }
