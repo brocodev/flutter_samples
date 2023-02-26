@@ -36,27 +36,22 @@ class SmartRoomCard extends StatelessWidget {
     );
   }
 
+  BoxDecoration get _vignetteDecoration => BoxDecoration(
+        borderRadius: borderRadiusA12,
+        gradient: const RadialGradient(
+          radius: 2,
+          colors: [Colors.transparent, Colors.black],
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: [
-        DecoratedBox(
-          decoration: _roomCardDecoration,
-          child: const _RoomTitle(),
-        ),
-        DecoratedBox(
-          decoration: BoxDecoration(
-            borderRadius: borderRadiusA12,
-            gradient: const RadialGradient(
-              radius: 2,
-              colors: [
-                Colors.transparent,
-                Colors.black,
-              ],
-            ),
-          ),
-        ),
+        DecoratedBox(decoration: _roomCardDecoration),
+        DecoratedBox(decoration: _vignetteDecoration),
+        _RoomTitle(title: smartRoom.name),
         Align(
           alignment: Alignment.bottomCenter,
           child: Column(
@@ -84,7 +79,9 @@ class SmartRoomCard extends StatelessWidget {
 class _RoomTitle extends StatelessWidget {
   const _RoomTitle({
     Key? key,
+    required this.title,
   }) : super(key: key);
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +99,7 @@ class _RoomTitle extends StatelessWidget {
                   child: RotatedBox(
                     quarterTurns: 3,
                     child: Text(
-                      'LIVING ROOM',
+                      title,
                       maxLines: 1,
                       style: context.displayMedium
                           .copyWith(color: SHColors.textColor),
