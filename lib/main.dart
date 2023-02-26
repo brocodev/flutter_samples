@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/core/app/app.dart';
+import 'package:flutter_samples/smart_home/core/app/app.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const SmartHomeApp());
 }

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/core/theme/colors.dart';
+import 'package:flutter_samples/smart_home/core/theme/colors.dart';
 import 'package:ui_common/ui_common.dart';
 
 class PageViewIndicators extends StatelessWidget {
   const PageViewIndicators({
     Key? key,
     required this.length,
-    required this.currentPercentIndex,
+    required this.pageIndex,
   }) : super(key: key);
 
   final int length;
-  final double currentPercentIndex;
+  final double pageIndex;
 
   @override
   Widget build(BuildContext context) {
-    final index = currentPercentIndex;
+    final index = pageIndex;
     return SizedBox(
       height: 12.w,
       child: Stack(
@@ -29,15 +29,15 @@ class PageViewIndicators extends StatelessWidget {
               ],
             ],
           ),
-          AnimatedPositioned(
-            duration: kThemeAnimationDuration,
-            left: (16.w * index) + (6.w * index),
-            child: const _BorderDot(),
-          ),
-          // Positioned(
+          // AnimatedPositioned(
+          //   duration: kThemeAnimationDuration,
           //   left: (16.w * index) + (6.w * index),
           //   child: const _BorderDot(),
-          // )
+          // ),
+          Positioned(
+            left: (16.w * index) + (6.w * index),
+            child: const _BorderDot(),
+          )
         ],
       ),
     );

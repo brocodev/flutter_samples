@@ -1,17 +1,19 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/core/constants/icons.dart';
-import 'package:flutter_samples/core/theme/colors.dart';
-import 'package:flutter_samples/src/presentation/widgets/shimmer_arrows.dart';
+import 'package:flutter_samples/smart_home/core/constants/icons.dart';
+import 'package:flutter_samples/smart_home/core/theme/colors.dart';
+import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
+import 'package:flutter_samples/smart_home/src/presentation/widgets/shimmer_arrows.dart';
 import 'package:ui_common/ui_common.dart';
 
-class RoomCard extends StatelessWidget {
-  const RoomCard({Key? key, required this.percent, required this.imageUrl})
+class SmartRoomCard extends StatelessWidget {
+  const SmartRoomCard(
+      {Key? key, required this.percent, required this.smartRoom})
       : super(key: key);
 
   final double percent;
-  final String imageUrl;
+  final SmartRoom smartRoom;
 
   BoxDecoration get _roomCardDecoration {
     return BoxDecoration(
@@ -25,7 +27,7 @@ class RoomCard extends StatelessWidget {
         ),
       ],
       image: DecorationImage(
-        image: NetworkImage(imageUrl),
+        image: NetworkImage(smartRoom.imageUrl),
         fit: BoxFit.cover,
         colorFilter:
             const ColorFilter.mode(Colors.black26, BlendMode.colorBurn),

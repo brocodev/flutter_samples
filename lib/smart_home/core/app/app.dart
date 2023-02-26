@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_samples/core/theme/theme.dart';
-import 'package:flutter_samples/src/presentation/screens/home_screen.dart';
+import 'package:flutter_samples/smart_home/core/theme/theme.dart';
+import 'package:flutter_samples/smart_home/src/presentation/screens/home_screen.dart';
 import 'package:ui_common/ui_common.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class SmartHomeApp extends StatelessWidget {
+  const SmartHomeApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     );
     return ScreenUtilInit(
       builder: (context, child) => MaterialApp(
-        title: 'Flutter samples',
+        title: 'Smart Home App',
         debugShowCheckedModeBanner: false,
         theme: SHTheme.dark,
         home: child,

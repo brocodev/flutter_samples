@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/core/constants/icons.dart';
-import 'package:flutter_samples/src/presentation/widgets/linear_gradient_container.dart';
-import 'package:flutter_samples/src/presentation/widgets/page_view_indicators.dart';
-import 'package:flutter_samples/src/presentation/widgets/room_card.dart';
+import 'package:flutter_samples/smart_home/core/constants/icons.dart';
+import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
+import 'package:flutter_samples/smart_home/src/presentation/widgets/lighted_background..dart';
+import 'package:flutter_samples/smart_home/src/presentation/widgets/page_view_indicators.dart';
+import 'package:flutter_samples/smart_home/src/presentation/widgets/smart_room_card.dart';
 import 'package:ui_common/ui_common.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -64,31 +65,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (_, value, __) => PageView.builder(
                     controller: controller,
                     physics: const BouncingScrollPhysics(),
-                    itemCount: 5,
-                    itemBuilder: (__, index) {
-                      const urls = [
-                        'https://cdn1.coppel.com/images/catalog/pm/4467263-1.jpg',
-                        'https://media.houseandgarden.co.uk/photos/637637c2e4eb0449205a261c/4:3/w_2000,h_1500,c_limit/Shot-04_068_RT.jpg',
-                        'https://mueblesvizcaya.com.mx/wp-content/uploads/2021/01/30KENES00-COMEDOR-KENA-P6.jpg',
-                        'https://cdn.shopify.com/s/files/1/2217/4155/products/bali-3-amb_1400x.png?v=1661114773',
-                        'https://m.media-amazon.com/images/I/715hLONUQOL._AC_SL1500_.jpg'
-                      ];
-                      return Padding(
-                        padding: edgeInsetsH16.copyWith(bottom: 24.h),
-                        child: RoomCard(
-                          percent: (value - index),
-                          imageUrl: urls[index],
-                        ),
-                      );
-                    },
+                    itemCount: SmartRoom.fakeValues.length,
+                    itemBuilder: (__, index) => Padding(
+                      padding: edgeInsetsH16.copyWith(bottom: 24.h),
+                      child: SmartRoomCard(
+                        percent: (value - index),
+                        smartRoom: SmartRoom.fakeValues[index],
+                      ),
+                    ),
                   ),
                 ),
               ),
               spaceV20,
               ValueListenableBuilder<double>(
                 valueListenable: pageNotifier,
-                builder: (_, value, __) =>
-                    PageViewIndicators(length: 5, currentPercentIndex: value),
+                builder: (_, value, __) => PageViewIndicators(
+                  length: SmartRoom.fakeValues.length,
+                  pageIndex: value,
+                ),
               ),
               spaceV32,
             ],
