@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/constants/icons.dart';
 import 'package:flutter_samples/smart_home/core/theme/colors.dart';
@@ -8,9 +9,11 @@ import 'package:flutter_samples/smart_home/src/presentation/widgets/shimmer_arro
 import 'package:ui_common/ui_common.dart';
 
 class SmartRoomCard extends StatelessWidget {
-  const SmartRoomCard(
-      {Key? key, required this.percent, required this.smartRoom})
-      : super(key: key);
+  const SmartRoomCard({
+    Key? key,
+    required this.percent,
+    required this.smartRoom,
+  }) : super(key: key);
 
   final double percent;
   final SmartRoom smartRoom;
@@ -27,7 +30,7 @@ class SmartRoomCard extends StatelessWidget {
         ),
       ],
       image: DecorationImage(
-        image: NetworkImage(smartRoom.imageUrl),
+        image: CachedNetworkImageProvider(smartRoom.imageUrl),
         fit: BoxFit.cover,
         colorFilter:
             const ColorFilter.mode(Colors.black26, BlendMode.colorBurn),
@@ -92,16 +95,16 @@ class _RoomTitle extends StatelessWidget {
         Flexible(
           child: Row(
             children: [
-              FittedBox(
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 60.h),
-                  child: RotatedBox(
-                    quarterTurns: 3,
+              RotatedBox(
+                quarterTurns: -1,
+                child: FittedBox(
+                  child: Padding(
+                    padding:
+                        EdgeInsets.only(left: 40.h, right: 20.h, top: 12.w),
                     child: Text(
                       title,
                       maxLines: 1,
-                      style: context.displayMedium
+                      style: context.displayLarge
                           .copyWith(color: SHColors.textColor),
                     ),
                   ),
@@ -115,11 +118,9 @@ class _RoomTitle extends StatelessWidget {
                   icon: const Icon(SHIcons.camera, color: SHColors.textColor),
                 ),
               ),
-              spaceV8,
             ],
           ),
         ),
-        spaceV12,
       ],
     );
   }

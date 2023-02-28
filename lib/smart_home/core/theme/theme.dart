@@ -6,13 +6,13 @@ import 'package:ui_common/ui_common.dart';
 abstract class SHTheme {
   static ThemeData dark = ThemeData(
     textTheme: TextTheme(
-      bodyLarge: GoogleFonts.montserrat(
+      bodyLarge: GoogleFonts.gruppo(
         fontSize: 16.sp,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w800,
         color: SHColors.textColor,
       ),
-      bodyMedium: GoogleFonts.montserrat(
-        fontSize: 16.sp,
+      bodyMedium: GoogleFonts.gruppo(
+        fontSize: 14.sp,
         fontWeight: FontWeight.w400,
         color: SHColors.textColor,
       ),
@@ -22,7 +22,7 @@ abstract class SHTheme {
         color: SHColors.textColor,
       ),
       displayLarge: GoogleFonts.buda(
-        fontSize: 60.sp,
+        fontSize: 70.sp,
         color: SHColors.textColor,
       ),
       displayMedium: GoogleFonts.buda(

@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.5
   fluttericon: ^2.0.0
+  cached_network_image: ^3.2.3
   ui_common:
     path: packages/ui_common/
   google_fonts: ^4.0.3

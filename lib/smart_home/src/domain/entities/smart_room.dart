@@ -41,7 +41,7 @@ class SmartRoom {
 
   static List<SmartRoom> fakeValues = [
     _room,
-    _room.copyWith(name: 'DINNER ROOM', imageUrl: _imagesUrls[2]),
+    _room.copyWith(name: 'DININGROOM', imageUrl: _imagesUrls[2]),
     _room.copyWith(name: 'KITCHEN', imageUrl: _imagesUrls[3]),
     _room.copyWith(name: 'BEDROOM', imageUrl: _imagesUrls[4]),
     _room.copyWith(name: 'BATHROOM', imageUrl: _imagesUrls[1]),
@@ -49,7 +49,7 @@ class SmartRoom {
 }
 
 final _room = SmartRoom(
-  name: 'LIVING ROOM',
+  name: 'LIVINGROOM',
   imageUrl: _imagesUrls[0],
   temperature: 12,
   airHumidity: 23,
@@ -59,9 +59,9 @@ final _room = SmartRoom(
 );
 
 const _imagesUrls = [
-  'https://cdn1.coppel.com/images/catalog/pm/4467263-1.jpg',
-  'https://images.ctfassets.net/g44e4oo0e2sa/5tvDeKAKSGZdXDajkgMmWs/1d8952769220498c8a6f653df19ca291/Rhea_Suite_Main_Image_1500px.jpg?fm=webp&q=75&r=4',
-  'https://mueblesvizcaya.com.mx/wp-content/uploads/2021/01/30KENES00-COMEDOR-KENA-P6.jpg',
-  'https://cdn.shopify.com/s/files/1/2217/4155/products/bali-3-amb_1400x.png?v=1661114773',
+  'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
+  'https://images.unsplash.com/photo-1564540583246-934409427776?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1706&q=80',
+  'https://images.unsplash.com/photo-1616486886892-ff366aa67ba4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80',
+  'https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
   'https://m.media-amazon.com/images/I/715hLONUQOL._AC_SL1500_.jpg'
 ];
