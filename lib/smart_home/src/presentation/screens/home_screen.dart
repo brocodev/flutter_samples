@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/constants/icons.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
+import 'package:flutter_samples/smart_home/src/presentation/views/smart_rooms_page_view.dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/lighted_background..dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/page_view_indicators.dart';
-import 'package:flutter_samples/smart_home/src/presentation/widgets/smart_rooms_page_view.dart';
 import 'package:ui_common/ui_common.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final PageController controller = PageController(viewportFraction: .8);
   final ValueNotifier<double> pageNotifier = ValueNotifier(0);
-  final ValueNotifier<bool> outAnimationNotifier = ValueNotifier(false);
+  final ValueNotifier<int> roomSelectorNotifier = ValueNotifier(-1);
 
   @override
   void initState() {
@@ -63,16 +63,26 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 child: SmartRoomsPageView(
                   pageNotifier: pageNotifier,
-                  outAnimationNotifier: outAnimationNotifier,
+                  roomSelectorNotifier: roomSelectorNotifier,
                   controller: controller,
                 ),
               ),
               spaceV20,
-              ValueListenableBuilder<double>(
-                valueListenable: pageNotifier,
-                builder: (_, value, __) => PageViewIndicators(
-                  length: SmartRoom.fakeValues.length,
-                  pageIndex: value,
+              ValueListenableBuilder<int>(
+                valueListenable: roomSelectorNotifier,
+                builder: (_, value, child) => AnimatedOpacity(
+                  opacity: value != -1 ? 0 : 1,
+                  duration: value != -1
+                      ? const Duration(milliseconds: 1)
+                      : const Duration(milliseconds: 400),
+                  child: child,
+                ),
+                child: ValueListenableBuilder<double>(
+                  valueListenable: pageNotifier,
+                  builder: (_, value, __) => PageViewIndicators(
+                    length: SmartRoom.fakeValues.length,
+                    pageIndex: value,
+                  ),
                 ),
               ),
               spaceV32,
@@ -81,15 +91,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         bottomNavigationBar: Padding(
           padding: edgeInsetsA20.copyWith(top: 0),
-          child: ValueListenableBuilder<bool>(
-            valueListenable: outAnimationNotifier,
-            builder: (_, enable, child) => AnimatedOpacity(
+          child: ValueListenableBuilder<int>(
+            valueListenable: roomSelectorNotifier,
+            builder: (_, value, child) => AnimatedOpacity(
               duration: kThemeAnimationDuration,
-              opacity: enable ? 0 : 1,
+              opacity: value != -1 ? 0 : 1,
               child: AnimatedContainer(
                 duration: kThemeAnimationDuration,
                 transform:
-                    Matrix4.translationValues(0, enable ? -30.0 : 0.0, 0),
+                    Matrix4.translationValues(0, value != -1 ? -30.0 : 0.0, 0),
                 child: child,
               ),
             ),

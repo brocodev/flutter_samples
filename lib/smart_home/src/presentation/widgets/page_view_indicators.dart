@@ -20,20 +20,18 @@ class PageViewIndicators extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              for (int i = 0; i < length; i++) ...[
-                const _Dot(),
-                spaceH16,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (int i = 0; i < length; i++) ...[
+                  const _Dot(),
+                  spaceH16,
+                ],
               ],
-            ],
+            ),
           ),
-          // AnimatedPositioned(
-          //   duration: kThemeAnimationDuration,
-          //   left: (16.w * index) + (6.w * index),
-          //   child: const _BorderDot(),
-          // ),
           Positioned(
             left: (16.w * index) + (6.w * index),
             child: const _BorderDot(),
@@ -56,7 +54,7 @@ class _BorderDot extends StatelessWidget {
       height: 12.w,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.orange, width: 2.5),
-        color: SHColors.scaffoldBackground,
+        color: SHColors.backgroundColor,
         shape: BoxShape.circle,
       ),
     );

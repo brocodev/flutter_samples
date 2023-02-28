@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/constants/icons.dart';
+import 'package:flutter_samples/smart_home/core/shared/prensentation/widgets/sh_divider.dart';
 import 'package:flutter_samples/smart_home/core/theme/colors.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/shimmer_arrows.dart';
@@ -13,8 +14,78 @@ class SmartRoomCard extends StatelessWidget {
     Key? key,
     required this.percent,
     required this.smartRoom,
+    required this.expand,
+    required this.onDragUp,
+    required this.onDragDown,
   }) : super(key: key);
 
+  final double percent;
+  final SmartRoom smartRoom;
+  final VoidCallback onDragUp;
+  final VoidCallback onDragDown;
+  final bool expand;
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder<double>(
+        duration: kThemeAnimationDuration,
+        curve: Curves.fastOutSlowIn,
+        tween: Tween(begin: 0, end: expand ? 1 : 0),
+        builder: (_, value, __) {
+          return Stack(
+            children: [
+              Transform.scale(
+                scale: lerpDouble(.85, 1.25, value)!,
+                child: Container(
+                  transform: Matrix4.translationValues(0, 80.h * value, 0),
+                  margin: edgeInsetsB32,
+                  decoration: BoxDecoration(
+                    color: SHColors.cardColor,
+                    borderRadius: borderRadiusA12,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 12,
+                        offset: Offset(-7, 7),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: const [
+                      SHDivider(),
+                      spaceV60,
+                    ],
+                  ),
+                ),
+              ),
+              Transform(
+                transform: Matrix4.translationValues(0, -60.h * value, 0),
+                child: _RoomCardBody(
+                  onDragUp: onDragUp,
+                  onDragDown: onDragDown,
+                  smartRoom: smartRoom,
+                  percent: percent,
+                ),
+              ),
+            ],
+          );
+        });
+  }
+}
+
+class _RoomCardBody extends StatelessWidget {
+  const _RoomCardBody({
+    Key? key,
+    required this.onDragUp,
+    required this.onDragDown,
+    required this.smartRoom,
+    required this.percent,
+  }) : super(key: key);
+
+  final VoidCallback onDragUp;
+  final VoidCallback onDragDown;
   final double percent;
   final SmartRoom smartRoom;
 
@@ -49,32 +120,39 @@ class SmartRoomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        DecoratedBox(decoration: _roomCardDecoration),
-        DecoratedBox(decoration: _vignetteDecoration),
-        _RoomTitle(title: smartRoom.name),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const ShimmerArrows(),
-              spaceV24,
-              Container(
-                margin: edgeInsetsB16,
-                height: 4.h,
-                width: 0.35.sw,
-                decoration: BoxDecoration(
-                  color: SHColors.textColor,
-                  borderRadius: borderRadiusA8,
+    return GestureDetector(
+      onTap: onDragUp,
+      onVerticalDragUpdate: (details) {
+        if (details.primaryDelta! < -10) onDragUp();
+        if (details.primaryDelta! > 10) onDragDown();
+      },
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          DecoratedBox(decoration: _roomCardDecoration),
+          DecoratedBox(decoration: _vignetteDecoration),
+          _RoomTitle(title: smartRoom.name),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const ShimmerArrows(),
+                spaceV24,
+                Container(
+                  margin: edgeInsetsB16,
+                  height: 4.h,
+                  width: 0.35.sw,
+                  decoration: BoxDecoration(
+                    color: SHColors.textColor,
+                    borderRadius: borderRadiusA8,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        )
-      ],
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

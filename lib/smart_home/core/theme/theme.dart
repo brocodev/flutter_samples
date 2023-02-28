@@ -55,6 +55,6 @@ abstract class SHTheme {
         fontWeight: FontWeight.w700,
       ),
     ),
-    scaffoldBackgroundColor: SHColors.scaffoldBackground,
+    scaffoldBackgroundColor: SHColors.backgroundColor,
   );
 }

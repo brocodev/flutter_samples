@@ -14,7 +14,7 @@ class LightedBackground extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        const ColoredBox(color: SHColors.scaffoldBackground),
+        const ColoredBox(color: SHColors.backgroundColor),
         Transform.scale(
           scale: 2,
           alignment: Alignment.topCenter,
