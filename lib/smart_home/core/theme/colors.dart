@@ -5,6 +5,7 @@ abstract class SHColors {
   static const Color hintColor = Color(0xFF717578);
   static const Color backgroundColor = Color(0xff343941);
   static const Color cardColor = Color(0xff4D565F);
+  static const Color selectedColor = Color(0xffE3D0B2);
 
   static const List<Color> dimmedLightColors = [
     Color(0xff505863),

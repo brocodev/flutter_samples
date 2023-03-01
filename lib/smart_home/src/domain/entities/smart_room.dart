@@ -7,7 +7,7 @@ class SmartRoom {
     required this.imageUrl,
     required this.temperature,
     required this.airHumidity,
-    required this.roomLights,
+    required this.lights,
     required this.airCondition,
     required this.musicInfo,
   });
@@ -16,7 +16,7 @@ class SmartRoom {
   final String imageUrl;
   final double temperature;
   final double airHumidity;
-  final SmartDevice roomLights;
+  final SmartDevice lights;
   final SmartDevice airCondition;
   final MusicInfo musicInfo;
 
@@ -34,7 +34,7 @@ class SmartRoom {
         imageUrl: imageUrl ?? this.imageUrl,
         temperature: temperature ?? this.temperature,
         airHumidity: airHumidity ?? this.airHumidity,
-        roomLights: roomLights ?? this.roomLights,
+        lights: roomLights ?? this.lights,
         airCondition: airCondition ?? this.airCondition,
         musicInfo: musicInfo ?? this.musicInfo,
       );
@@ -53,7 +53,7 @@ final _room = SmartRoom(
   imageUrl: _imagesUrls[0],
   temperature: 12,
   airHumidity: 23,
-  roomLights: SmartDevice(isOn: true, value: 20),
+  lights: SmartDevice(isOn: true, value: 20),
   airCondition: SmartDevice(isOn: false, value: 10),
   musicInfo: MusicInfo(isOn: false, currentSong: Song()),
 );

@@ -51,15 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {},
               icon: const Icon(SHIcons.search),
             ),
-            spaceH12,
+            width12,
           ],
         ),
         body: SafeArea(
           child: Column(
             children: [
-              spaceV24,
+              height24,
               Text('SELECT A ROOM', style: context.bodyLarge),
-              spaceV32,
+              height32,
               Expanded(
                 child: SmartRoomsPageView(
                   pageNotifier: pageNotifier,
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   controller: controller,
                 ),
               ),
-              spaceV20,
+              height20,
               ValueListenableBuilder<int>(
                 valueListenable: roomSelectorNotifier,
                 builder: (_, value, child) => AnimatedOpacity(
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              spaceV32,
+              height32,
             ],
           ),
         ),

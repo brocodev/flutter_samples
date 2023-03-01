@@ -11,14 +11,14 @@ abstract class SHTheme {
         fontWeight: FontWeight.w800,
         color: SHColors.textColor,
       ),
-      bodyMedium: GoogleFonts.gruppo(
+      bodyMedium: GoogleFonts.montserrat(
         fontSize: 14.sp,
         fontWeight: FontWeight.w400,
         color: SHColors.textColor,
       ),
       bodySmall: GoogleFonts.montserrat(
         fontSize: 12.sp,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w400,
         color: SHColors.textColor,
       ),
       displayLarge: GoogleFonts.buda(

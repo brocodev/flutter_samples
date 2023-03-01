@@ -3,26 +3,26 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/constants/icons.dart';
-import 'package:flutter_samples/smart_home/core/shared/prensentation/widgets/sh_divider.dart';
 import 'package:flutter_samples/smart_home/core/theme/colors.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
+import 'package:flutter_samples/smart_home/src/presentation/widgets/room_detail_back_card.dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/shimmer_arrows.dart';
 import 'package:ui_common/ui_common.dart';
 
-class SmartRoomCard extends StatelessWidget {
-  const SmartRoomCard({
+class RoomCard extends StatelessWidget {
+  const RoomCard({
     Key? key,
     required this.percent,
-    required this.smartRoom,
+    required this.room,
     required this.expand,
-    required this.onDragUp,
-    required this.onDragDown,
+    required this.onSwipeUp,
+    required this.onSwipeDown,
   }) : super(key: key);
 
   final double percent;
-  final SmartRoom smartRoom;
-  final VoidCallback onDragUp;
-  final VoidCallback onDragDown;
+  final SmartRoom room;
+  final VoidCallback onSwipeUp;
+  final VoidCallback onSwipeDown;
   final bool expand;
 
   @override
@@ -35,37 +35,15 @@ class SmartRoomCard extends StatelessWidget {
           return Stack(
             children: [
               Transform.scale(
-                scale: lerpDouble(.85, 1.25, value)!,
-                child: Container(
-                  transform: Matrix4.translationValues(0, 80.h * value, 0),
-                  margin: edgeInsetsB32,
-                  decoration: BoxDecoration(
-                    color: SHColors.cardColor,
-                    borderRadius: borderRadiusA12,
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 12,
-                        offset: Offset(-7, 7),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: const [
-                      SHDivider(),
-                      spaceV60,
-                    ],
-                  ),
-                ),
+                scale: lerpDouble(.85, 1.2, value)!,
+                child: RoomDetailBackCard(room: room, translation: value),
               ),
               Transform(
                 transform: Matrix4.translationValues(0, -60.h * value, 0),
                 child: _RoomCardBody(
-                  onDragUp: onDragUp,
-                  onDragDown: onDragDown,
-                  smartRoom: smartRoom,
+                  onSwipeUp: onSwipeUp,
+                  onSwipeDown: onSwipeDown,
+                  smartRoom: room,
                   percent: percent,
                 ),
               ),
@@ -78,14 +56,14 @@ class SmartRoomCard extends StatelessWidget {
 class _RoomCardBody extends StatelessWidget {
   const _RoomCardBody({
     Key? key,
-    required this.onDragUp,
-    required this.onDragDown,
+    required this.onSwipeUp,
+    required this.onSwipeDown,
     required this.smartRoom,
     required this.percent,
   }) : super(key: key);
 
-  final VoidCallback onDragUp;
-  final VoidCallback onDragDown;
+  final VoidCallback onSwipeUp;
+  final VoidCallback onSwipeDown;
   final double percent;
   final SmartRoom smartRoom;
 
@@ -121,10 +99,10 @@ class _RoomCardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onDragUp,
+      onTap: onSwipeUp,
       onVerticalDragUpdate: (details) {
-        if (details.primaryDelta! < -10) onDragUp();
-        if (details.primaryDelta! > 10) onDragDown();
+        if (details.primaryDelta! < -10) onSwipeUp();
+        if (details.primaryDelta! > 10) onSwipeDown();
       },
       child: Stack(
         fit: StackFit.expand,
@@ -138,7 +116,7 @@ class _RoomCardBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const ShimmerArrows(),
-                spaceV24,
+                height24,
                 Container(
                   margin: edgeInsetsB16,
                   height: 4.h,
@@ -169,7 +147,7 @@ class _RoomTitle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        spaceV8,
+        width8,
         Flexible(
           child: Row(
             children: [

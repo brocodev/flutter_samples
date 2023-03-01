@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
-import 'package:flutter_samples/smart_home/src/presentation/widgets/smart_room_card.dart';
+import 'package:flutter_samples/smart_home/src/presentation/widgets/room_card.dart';
 import 'package:ui_common/ui_common.dart';
 
 class SmartRoomsPageView extends StatelessWidget {
@@ -45,12 +45,12 @@ class SmartRoomsPageView extends StatelessWidget {
                   curve: Curves.fastOutSlowIn,
                   transform: _getOutTranslate(percent, selected, index),
                   padding: edgeInsetsH16,
-                  child: SmartRoomCard(
+                  child: RoomCard(
                     percent: percent,
                     expand: isSelected,
-                    smartRoom: SmartRoom.fakeValues[index],
-                    onDragUp: () => roomSelectorNotifier.value = index,
-                    onDragDown: () => roomSelectorNotifier.value = -1,
+                    room: SmartRoom.fakeValues[index],
+                    onSwipeUp: () => roomSelectorNotifier.value = index,
+                    onSwipeDown: () => roomSelectorNotifier.value = -1,
                   ),
                 );
               },
