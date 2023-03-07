@@ -61,75 +61,88 @@ class _HomeScreenState extends State<HomeScreen> {
               Text('SELECT A ROOM', style: context.bodyLarge),
               height32,
               Expanded(
-                child: SmartRoomsPageView(
-                  pageNotifier: pageNotifier,
-                  roomSelectorNotifier: roomSelectorNotifier,
-                  controller: controller,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    SmartRoomsPageView(
+                      pageNotifier: pageNotifier,
+                      roomSelectorNotifier: roomSelectorNotifier,
+                      controller: controller,
+                    ),
+                    Positioned.fill(
+                      top: null,
+                      child: Column(
+                        children: [
+                          ValueListenableBuilder<int>(
+                            valueListenable: roomSelectorNotifier,
+                            builder: (_, value, child) => AnimatedOpacity(
+                              opacity: value != -1 ? 0 : 1,
+                              duration: value != -1
+                                  ? const Duration(milliseconds: 1)
+                                  : const Duration(milliseconds: 400),
+                              child: child,
+                            ),
+                            child: ValueListenableBuilder<double>(
+                              valueListenable: pageNotifier,
+                              builder: (_, value, __) => Center(
+                                child: PageViewIndicators(
+                                  length: SmartRoom.fakeValues.length,
+                                  pageIndex: value,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: edgeInsetsA20,
+                            child: ValueListenableBuilder<int>(
+                              valueListenable: roomSelectorNotifier,
+                              builder: (_, value, child) => AnimatedOpacity(
+                                duration: kThemeAnimationDuration,
+                                opacity: value != -1 ? 0 : 1,
+                                child: AnimatedContainer(
+                                  duration: kThemeAnimationDuration,
+                                  transform: Matrix4.translationValues(
+                                      0, value != -1 ? -30.0 : 0.0, 0),
+                                  child: child,
+                                ),
+                              ),
+                              child: BottomNavigationBar(
+                                items: [
+                                  BottomNavigationBarItem(
+                                    icon: Padding(
+                                      padding: edgeInsetsA8,
+                                      child: const Icon(SHIcons.lock),
+                                    ),
+                                    label: 'UNLOCK',
+                                  ),
+                                  BottomNavigationBarItem(
+                                    icon: Padding(
+                                      padding: edgeInsetsA8,
+                                      child: const Icon(SHIcons.home),
+                                    ),
+                                    label: 'MAIN',
+                                  ),
+                                  BottomNavigationBarItem(
+                                    icon: Padding(
+                                      padding: edgeInsetsA8,
+                                      child: const Icon(SHIcons.settings),
+                                    ),
+                                    label: 'SETTINGS',
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              height20,
-              ValueListenableBuilder<int>(
-                valueListenable: roomSelectorNotifier,
-                builder: (_, value, child) => AnimatedOpacity(
-                  opacity: value != -1 ? 0 : 1,
-                  duration: value != -1
-                      ? const Duration(milliseconds: 1)
-                      : const Duration(milliseconds: 400),
-                  child: child,
-                ),
-                child: ValueListenableBuilder<double>(
-                  valueListenable: pageNotifier,
-                  builder: (_, value, __) => PageViewIndicators(
-                    length: SmartRoom.fakeValues.length,
-                    pageIndex: value,
-                  ),
-                ),
-              ),
-              height32,
             ],
           ),
         ),
-        bottomNavigationBar: Padding(
-          padding: edgeInsetsA20.copyWith(top: 0),
-          child: ValueListenableBuilder<int>(
-            valueListenable: roomSelectorNotifier,
-            builder: (_, value, child) => AnimatedOpacity(
-              duration: kThemeAnimationDuration,
-              opacity: value != -1 ? 0 : 1,
-              child: AnimatedContainer(
-                duration: kThemeAnimationDuration,
-                transform:
-                    Matrix4.translationValues(0, value != -1 ? -30.0 : 0.0, 0),
-                child: child,
-              ),
-            ),
-            child: BottomNavigationBar(
-              items: [
-                BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: edgeInsetsA8,
-                    child: const Icon(SHIcons.lock),
-                  ),
-                  label: 'UNLOCK',
-                ),
-                BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: edgeInsetsA8,
-                    child: const Icon(SHIcons.home),
-                  ),
-                  label: 'MAIN',
-                ),
-                BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: edgeInsetsA8,
-                    child: const Icon(SHIcons.settings),
-                  ),
-                  label: 'SETTINGS',
-                ),
-              ],
-            ),
-          ),
-        ),
+        extendBodyBehindAppBar: true,
       ),
     );
   }

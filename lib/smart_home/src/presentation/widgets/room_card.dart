@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/constants/icons.dart';
 import 'package:flutter_samples/smart_home/core/theme/colors.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
-import 'package:flutter_samples/smart_home/src/presentation/widgets/room_detail_back_card.dart';
+import 'package:flutter_samples/smart_home/src/presentation/widgets/room_details_back_card.dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/shimmer_arrows.dart';
 import 'package:ui_common/ui_common.dart';
 
@@ -36,15 +36,21 @@ class RoomCard extends StatelessWidget {
             children: [
               Transform.scale(
                 scale: lerpDouble(.85, 1.2, value)!,
-                child: RoomDetailBackCard(room: room, translation: value),
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 160.h),
+                  child: RoomDetailsBackCard(room: room, translation: value),
+                ),
               ),
               Transform(
-                transform: Matrix4.translationValues(0, -60.h * value, 0),
-                child: _RoomCardBody(
-                  onSwipeUp: onSwipeUp,
-                  onSwipeDown: onSwipeDown,
-                  smartRoom: room,
-                  percent: percent,
+                transform: Matrix4.translationValues(0, -80.h * value, 0),
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 160.h),
+                  child: _RoomCardBody(
+                    onSwipeUp: onSwipeUp,
+                    onSwipeDown: onSwipeDown,
+                    smartRoom: room,
+                    percent: percent,
+                  ),
                 ),
               ),
             ],
@@ -82,13 +88,14 @@ class _RoomCardBody extends StatelessWidget {
         image: CachedNetworkImageProvider(smartRoom.imageUrl),
         fit: BoxFit.cover,
         colorFilter:
-            const ColorFilter.mode(Colors.black26, BlendMode.colorBurn),
+        const ColorFilter.mode(Colors.black26, BlendMode.colorBurn),
         alignment: Alignment(lerpDouble(.3, -.3, percent)!, 0),
       ),
     );
   }
 
-  BoxDecoration get _vignetteDecoration => BoxDecoration(
+  BoxDecoration get _vignetteDecoration =>
+      BoxDecoration(
         borderRadius: borderRadiusA12,
         gradient: const RadialGradient(
           radius: 2,
@@ -156,7 +163,7 @@ class _RoomTitle extends StatelessWidget {
                 child: FittedBox(
                   child: Padding(
                     padding:
-                        EdgeInsets.only(left: 40.h, right: 20.h, top: 12.w),
+                    EdgeInsets.only(left: 40.h, right: 20.h, top: 12.w),
                     child: Text(
                       title,
                       maxLines: 1,
