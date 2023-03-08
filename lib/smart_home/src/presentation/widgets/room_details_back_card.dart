@@ -35,6 +35,24 @@ class RoomDetailsBackCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          const _RoomInfoRow(
+            icon: Icon(Icons.device_thermostat),
+            label: Text('Temperature'),
+            data: Text('22°'),
+          ),
+          height4,
+          const _RoomInfoRow(
+            icon: Icon(Icons.water_drop_outlined),
+            label: Text('Air Humidity'),
+            data: Text('48%'),
+          ),
+          height4,
+          const _RoomInfoRow(
+            icon: Icon(Icons.timer_outlined),
+            label: Text('Timer'),
+            data: null,
+          ),
+          height12,
           const SHDivider(),
           Padding(
             padding: EdgeInsets.all(12.sp),
@@ -44,19 +62,19 @@ class RoomDetailsBackCard extends StatelessWidget {
                 _DeviceIconSwitcher(
                   onTap: (value) {},
                   icon: const Icon(SHIcons.lightBulb),
-                  label: 'Lights',
+                  label: const Text('Lights'),
                   value: room.lights.isOn,
                 ),
                 _DeviceIconSwitcher(
                   onTap: (value) {},
                   icon: const Icon(SHIcons.fan),
-                  label: 'Air-conditioning',
+                  label: const Text('Air-conditioning'),
                   value: room.airCondition.isOn,
                 ),
                 _DeviceIconSwitcher(
                   onTap: (value) {},
                   icon: const Icon(SHIcons.music),
-                  label: 'Music',
+                  label: const Text('Music'),
                   value: room.musicInfo.isOn,
                 ),
               ],
@@ -76,7 +94,7 @@ class _DeviceIconSwitcher extends StatelessWidget {
     required this.value,
   });
 
-  final String label;
+  final Text label;
   final Icon icon;
   final bool value;
   final ValueChanged<bool> onTap;
@@ -86,29 +104,95 @@ class _DeviceIconSwitcher extends StatelessWidget {
     final color = value ? SHColors.selectedColor : SHColors.textColor;
     return InkWell(
       onTap: () => onTap(!value),
-      child: Container(
-        color: Colors.amber,
-        child: Column(
-          children: [
-            IconTheme(
-              data: IconThemeData(color: color, size: 28.sp),
-              child: icon,
+      child: Column(
+        children: [
+          IconTheme(
+            data: IconThemeData(color: color, size: 24.sp),
+            child: icon,
+          ),
+          height4,
+          DefaultTextStyle(
+            style: context.bodySmall.copyWith(color: color),
+            child: label,
+          ),
+          Text(
+            value ? 'ON' : 'OFF',
+            style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.w700,
+              color: color,
             ),
-            height4,
-            Text(
-              label,
-              style: context.bodySmall.copyWith(fontSize: 10.sp, color: color),
-            ),
-            Text(
-              value ? 'ON' : 'OFF',
-              style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w700,
-                color: color,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class _RoomInfoRow extends StatelessWidget {
+  const _RoomInfoRow({
+    required this.icon,
+    required this.label,
+    required this.data,
+  });
+
+  final Icon icon;
+  final Text label;
+  final Text? data;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        width32,
+        IconTheme(
+          data: context.iconTheme.copyWith(size: 18.sp),
+          child: icon,
+        ),
+        width4,
+        Expanded(
+          child: DefaultTextStyle(
+            style: context.bodySmall.copyWith(
+              color: data == null ? context.textColor.withOpacity(.6) : null,
+            ),
+            child: label,
+          ),
+        ),
+        DefaultTextStyle(
+          style: GoogleFonts.montserrat(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w700,
+          ),
+          child: data ??
+              Row(
+                children: [
+                  SizedBox.square(
+                    dimension: 8.sp,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Colors.cyan,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.cyan.withOpacity(.6),
+                            blurRadius: 5,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  width4,
+                  Text(
+                    'OFF',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: SHColors.textColor.withOpacity(.6),
+                    ),
+                  ),
+                ],
+              ),
+        ),
+        width32,
+      ],
     );
   }
 }
