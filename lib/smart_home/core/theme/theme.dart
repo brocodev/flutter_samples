@@ -17,7 +17,7 @@ abstract class SHTheme {
         color: SHColors.textColor,
       ),
       bodySmall: GoogleFonts.montserrat(
-        fontSize: 12.sp,
+        fontSize: 10.sp,
         fontWeight: FontWeight.w400,
         color: SHColors.textColor,
       ),
