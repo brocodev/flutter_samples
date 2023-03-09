@@ -35,16 +35,16 @@ class RoomDetailsBackCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const _RoomInfoRow(
-            icon: Icon(Icons.device_thermostat),
-            label: Text('Temperature'),
-            data: Text('22°'),
+          _RoomInfoRow(
+            icon: const Icon(Icons.device_thermostat),
+            label: const Text('Temperature'),
+            data: '${room.temperature}°',
           ),
           height4,
-          const _RoomInfoRow(
-            icon: Icon(Icons.water_drop_outlined),
-            label: Text('Air Humidity'),
-            data: Text('48%'),
+          _RoomInfoRow(
+            icon: const Icon(Icons.water_drop_outlined),
+            label: const Text('Air Humidity'),
+            data: '${room.airHumidity}%',
           ),
           height4,
           const _RoomInfoRow(
@@ -137,7 +137,7 @@ class _RoomInfoRow extends StatelessWidget {
 
   final Icon icon;
   final Text label;
-  final Text? data;
+  final String? data;
 
   @override
   Widget build(BuildContext context) {
@@ -157,13 +157,15 @@ class _RoomInfoRow extends StatelessWidget {
             child: label,
           ),
         ),
-        DefaultTextStyle(
-          style: GoogleFonts.montserrat(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w700,
-          ),
-          child: data ??
-              Row(
+        data != null
+            ? Text(
+                data!,
+                style: GoogleFonts.montserrat(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w700,
+                ),
+              )
+            : Row(
                 children: [
                   SizedBox.square(
                     dimension: 8.sp,
@@ -190,7 +192,6 @@ class _RoomInfoRow extends StatelessWidget {
                   ),
                 ],
               ),
-        ),
         width32,
       ],
     );
