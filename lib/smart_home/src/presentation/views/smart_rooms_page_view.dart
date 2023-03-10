@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
+import 'package:flutter_samples/smart_home/src/presentation/screens/room_detail_screen.dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/room_card.dart';
 import 'package:ui_common/ui_common.dart';
 
@@ -40,6 +41,7 @@ class SmartRoomsPageView extends StatelessWidget {
               itemBuilder: (__, index) {
                 final percent = (page - index);
                 final isSelected = selected == index;
+                var room = SmartRoom.fakeValues[index];
                 return AnimatedContainer(
                   duration: kThemeAnimationDuration,
                   curve: Curves.fastOutSlowIn,
@@ -48,9 +50,23 @@ class SmartRoomsPageView extends StatelessWidget {
                   child: RoomCard(
                     percent: percent,
                     expand: isSelected,
-                    room: SmartRoom.fakeValues[index],
+                    room: room,
                     onSwipeUp: () => roomSelectorNotifier.value = index,
                     onSwipeDown: () => roomSelectorNotifier.value = -1,
+                    onTap: () async {
+                      if (isSelected) {
+                        await Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (_, animation, __) => FadeTransition(
+                              opacity: animation,
+                              child: RoomDetailScreen(room: room),
+                            ),
+                          ),
+                        );
+                        roomSelectorNotifier.value = -1;
+                      }
+                    },
                   ),
                 );
               },

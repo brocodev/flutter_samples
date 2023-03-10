@@ -3,6 +3,7 @@ import 'package:flutter_samples/smart_home/src/domain/entities/smart_device.dart
 
 class SmartRoom {
   SmartRoom({
+    required this.id,
     required this.name,
     required this.imageUrl,
     required this.temperature,
@@ -12,6 +13,7 @@ class SmartRoom {
     required this.musicInfo,
   });
 
+  final String id;
   final String name;
   final String imageUrl;
   final double temperature;
@@ -21,34 +23,37 @@ class SmartRoom {
   final MusicInfo musicInfo;
 
   SmartRoom copyWith({
+    String? id,
     String? name,
     String? imageUrl,
     double? temperature,
     double? airHumidity,
-    SmartDevice? roomLights,
+    SmartDevice? lights,
     SmartDevice? airCondition,
     MusicInfo? musicInfo,
   }) =>
       SmartRoom(
+        id: id ?? this.id,
         name: name ?? this.name,
         imageUrl: imageUrl ?? this.imageUrl,
         temperature: temperature ?? this.temperature,
         airHumidity: airHumidity ?? this.airHumidity,
-        lights: roomLights ?? this.lights,
+        lights: lights ?? this.lights,
         airCondition: airCondition ?? this.airCondition,
         musicInfo: musicInfo ?? this.musicInfo,
       );
 
   static List<SmartRoom> fakeValues = [
     _room,
-    _room.copyWith(name: 'DININGROOM', imageUrl: _imagesUrls[2]),
-    _room.copyWith(name: 'KITCHEN', imageUrl: _imagesUrls[3]),
-    _room.copyWith(name: 'BEDROOM', imageUrl: _imagesUrls[4]),
-    _room.copyWith(name: 'BATHROOM', imageUrl: _imagesUrls[1]),
+    _room.copyWith(id: '2', name: 'DININGROOM', imageUrl: _imagesUrls[2]),
+    _room.copyWith(id: '3', name: 'KITCHEN', imageUrl: _imagesUrls[3]),
+    _room.copyWith(id: '4', name: 'BEDROOM', imageUrl: _imagesUrls[4]),
+    _room.copyWith(id: '5', name: 'BATHROOM', imageUrl: _imagesUrls[1]),
   ];
 }
 
 final _room = SmartRoom(
+  id: '1',
   name: 'LIVINGROOM',
   imageUrl: _imagesUrls[0],
   temperature: 12,

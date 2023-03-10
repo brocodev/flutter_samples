@@ -6,8 +6,8 @@ import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_common/ui_common.dart';
 
-class RoomDetailsBackCard extends StatelessWidget {
-  const RoomDetailsBackCard({
+class BackgroundRoomCard extends StatelessWidget {
+  const BackgroundRoomCard({
     super.key,
     required this.room,
     required this.translation,
@@ -185,7 +185,8 @@ class _RoomInfoRow extends StatelessWidget {
                   width4,
                   Text(
                     'OFF',
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w800,
                       fontSize: 12.sp,
                       color: SHColors.textColor.withOpacity(.6),
                     ),
