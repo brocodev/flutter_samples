@@ -1,12 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/shared/prensentation/widgets/parallax_image_box.dart';
+import 'package:flutter_samples/smart_home/core/constants/icons.dart';
+import 'package:flutter_samples/smart_home/core/shared/prensentation/widgets/parallax_image_card.dart';
 import 'package:flutter_samples/smart_home/core/shared/prensentation/widgets/shimmer_arrows.dart';
 import 'package:flutter_samples/smart_home/core/theme/colors.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
+import 'package:flutter_samples/smart_home/src/presentation/screens/room_detail_screen.dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/background_room_card.dart';
-import 'package:flutter_samples/smart_home/src/presentation/widgets/vertical_room_title.dart';
 import 'package:ui_common/ui_common.dart';
 
 class RoomCard extends StatelessWidget {
@@ -59,39 +60,115 @@ class RoomCard extends StatelessWidget {
               },
               child: Hero(
                 tag: room.id,
+                // -----------------------------------------------
+                // Custom hero widget
+                // -----------------------------------------------
+                flightShuttleBuilder: (_, animation, __, ___, ____) =>
+                    AnimatedBuilder(
+                  animation: animation,
+                  builder: (__, _) => RoomDetailScreen(
+                    room: room,
+                    animationValue: animation.value,
+                  ),
+                ),
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    ParallaxImageBox(
+                    ParallaxImageCard(
                       imageUrl: room.imageUrl,
-                      factorChange: percent,
+                      parallaxValue: percent,
                     ),
                     VerticalRoomTitle(room: room),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const ShimmerArrows(),
-                          height24,
-                          Container(
-                            margin: edgeInsetsB16,
-                            height: 4.h,
-                            width: 0.35.sw,
-                            decoration: BoxDecoration(
-                              color: SHColors.textColor,
-                              borderRadius: borderRadiusA8,
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
+                    const CameraIconButton(),
+                    const AnimatedUpwardArrows()
                   ],
                 ),
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class AnimatedUpwardArrows extends StatelessWidget {
+  const AnimatedUpwardArrows({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          const ShimmerArrows(),
+          height24,
+          Container(
+            margin: edgeInsetsB16,
+            height: 4.h,
+            width: 0.35.sw,
+            decoration: BoxDecoration(
+              color: SHColors.textColor,
+              borderRadius: borderRadiusA8,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CameraIconButton extends StatelessWidget {
+  const CameraIconButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      type: MaterialType.transparency,
+      child: Align(
+        alignment: Alignment.topRight,
+        child: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            SHIcons.camera,
+            color: SHColors.textColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class VerticalRoomTitle extends StatelessWidget {
+  const VerticalRoomTitle({
+    Key? key,
+    required this.room,
+  }) : super(key: key);
+  final SmartRoom room;
+
+  @override
+  Widget build(BuildContext context) {
+    // final dx = 50 * animationValue;
+    // final opacity = 1 - animationValue;
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: RotatedBox(
+        quarterTurns: -1,
+        child: FittedBox(
+          child: Padding(
+            padding: EdgeInsets.only(left: 40.h, right: 20.h, top: 12.w),
+            child: Text(
+              room.name,
+              maxLines: 1,
+              style: context.displayLarge.copyWith(color: SHColors.textColor),
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/theme/colors.dart';
 import 'package:ui_common/ui_common.dart';
 
-class ParallaxImageBox extends StatelessWidget {
-  const ParallaxImageBox({
+class ParallaxImageCard extends StatelessWidget {
+  const ParallaxImageCard({
     super.key,
     required this.imageUrl,
-    this.factorChange = 1,
+    this.parallaxValue = 0,
   });
 
   final String imageUrl;
-  final double factorChange;
+  final double parallaxValue;
 
   // -----------------------------------------------
   // Decoration for image and parallax effect
@@ -33,7 +33,7 @@ class ParallaxImageBox extends StatelessWidget {
           fit: BoxFit.cover,
           colorFilter:
               const ColorFilter.mode(Colors.black26, BlendMode.colorBurn),
-          alignment: Alignment(lerpDouble(.5, -.5, factorChange)!, 0),
+          alignment: Alignment(lerpDouble(.5, -.5, parallaxValue)!, 0),
         ),
       );
 

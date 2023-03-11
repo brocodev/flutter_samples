@@ -58,6 +58,10 @@ class SmartRoomsPageView extends StatelessWidget {
                         await Navigator.push(
                           context,
                           PageRouteBuilder(
+                            transitionDuration:
+                                const Duration(milliseconds: 600),
+                            reverseTransitionDuration:
+                                const Duration(milliseconds: 600),
                             pageBuilder: (_, animation, __) => FadeTransition(
                               opacity: animation,
                               child: RoomDetailScreen(room: room),
