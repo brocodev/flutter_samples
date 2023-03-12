@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -16,7 +17,13 @@ class RoomDetailScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: const SHAppBar(),
-      body: SizedBox(
+      body: GestureDetector(
+        onHorizontalDragUpdate: (details) {
+          if (!Platform.isIOS) return;
+          if (details.primaryDelta! > 10 && details.globalPosition.dx < 100) {
+            Navigator.pop(context);
+          }
+        },
         child: RoomDetailItems(
           // animationValue: 0,
           room: room,
