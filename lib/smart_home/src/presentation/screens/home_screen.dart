@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/constants/icons.dart';
-import 'package:flutter_samples/smart_home/core/shared/prensentation/widgets/lighted_background..dart';
+import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/lighted_background..dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
 import 'package:flutter_samples/smart_home/src/presentation/views/smart_rooms_page_view.dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/page_view_indicators.dart';
+import 'package:flutter_samples/smart_home/src/presentation/widgets/sh_app_bar.dart';
 import 'package:ui_common/ui_common.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -41,19 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return LightedBackground(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(SHIcons.menu),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(SHIcons.search),
-            ),
-            width12,
-          ],
-        ),
+        appBar: const SHAppBar(),
         body: SafeArea(
           child: Column(
             children: [

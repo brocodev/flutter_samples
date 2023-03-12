@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/constants/icons.dart';
-import 'package:flutter_samples/smart_home/core/shared/prensentation/widgets/parallax_image_card.dart';
-import 'package:flutter_samples/smart_home/core/shared/prensentation/widgets/shimmer_arrows.dart';
+import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/parallax_image_card.dart';
+import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/shimmer_arrows.dart';
 import 'package:flutter_samples/smart_home/core/theme/colors.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
 import 'package:flutter_samples/smart_home/src/presentation/screens/room_detail_screen.dart';
@@ -66,7 +66,7 @@ class RoomCard extends StatelessWidget {
                 flightShuttleBuilder: (_, animation, __, ___, ____) =>
                     AnimatedBuilder(
                   animation: animation,
-                  builder: (__, _) => RoomDetailScreen(
+                  builder: (__, _) => RoomDetailItems(
                     room: room,
                     animationValue: animation.value,
                   ),
@@ -131,7 +131,7 @@ class CameraIconButton extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: Align(
-        alignment: Alignment.topRight,
+        alignment: const Alignment(1, -1),
         child: IconButton(
           onPressed: () {},
           icon: const Icon(

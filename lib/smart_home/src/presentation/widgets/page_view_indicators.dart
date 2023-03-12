@@ -21,13 +21,13 @@ class PageViewIndicators extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
+            padding: EdgeInsets.symmetric(horizontal: 3.w),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 for (int i = 0; i < length; i++) ...[
                   const _Dot(),
-                  width16,
+                  if (i < length - 1) width16,
                 ],
               ],
             ),

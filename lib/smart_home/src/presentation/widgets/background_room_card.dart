@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/constants/icons.dart';
-import 'package:flutter_samples/smart_home/core/shared/prensentation/widgets/sh_divider.dart';
+import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/sh_divider.dart';
 import 'package:flutter_samples/smart_home/core/theme/colors.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
 import 'package:google_fonts/google_fonts.dart';
