@@ -11,9 +11,9 @@ abstract class SHTheme {
         fontWeight: FontWeight.w800,
         color: SHColors.textColor,
       ),
-      bodyMedium: GoogleFonts.montserrat(
+      bodyMedium: GoogleFonts.gruppo(
         fontSize: 14.sp,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w800,
         color: SHColors.textColor,
       ),
       bodySmall: GoogleFonts.montserrat(
@@ -39,6 +39,16 @@ abstract class SHTheme {
       backgroundColor: Colors.transparent,
     ),
     iconTheme: const IconThemeData(color: SHColors.textColor),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.white,
+        shape: const StadiumBorder(),
+        textStyle: GoogleFonts.montserrat(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w800,
+        ),
+      ),
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.transparent,
       elevation: 0,

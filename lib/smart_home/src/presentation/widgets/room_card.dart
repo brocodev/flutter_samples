@@ -63,14 +63,19 @@ class RoomCard extends StatelessWidget {
                 // -----------------------------------------------
                 // Custom hero widget
                 // -----------------------------------------------
-                flightShuttleBuilder: (_, animation, __, ___, ____) =>
-                    AnimatedBuilder(
-                  animation: animation,
-                  builder: (__, _) => RoomDetailItems(
-                    room: room,
-                    animationValue: animation.value,
-                  ),
-                ),
+                flightShuttleBuilder: (_, animation, __, ___, ____) {
+                  return AnimatedBuilder(
+                    animation: animation,
+                    builder: (context, _) => Material(
+                      type: MaterialType.transparency,
+                      child: RoomDetailItems(
+                        room: room,
+                        topPadding: context.mediaQuery.padding.top,
+                        animation: animation,
+                      ),
+                    ),
+                  );
+                },
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
@@ -163,7 +168,7 @@ class VerticalRoomTitle extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: 40.h, right: 20.h, top: 12.w),
             child: Text(
-              room.name,
+              room.name.replaceAll(' ', ''),
               maxLines: 1,
               style: context.displayLarge.copyWith(color: SHColors.textColor),
             ),

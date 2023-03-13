@@ -59,16 +59,16 @@ class SmartRoomsPageView extends StatelessWidget {
                           context,
                           PageRouteBuilder(
                             transitionDuration:
-                                const Duration(milliseconds: 400),
+                                const Duration(milliseconds: 600),
                             reverseTransitionDuration:
-                                const Duration(milliseconds: 400),
+                                const Duration(milliseconds: 600),
                             pageBuilder: (_, animation, __) => FadeTransition(
                               opacity: animation,
                               child: RoomDetailScreen(room: room),
                             ),
                           ),
                         );
-                        roomSelectorNotifier.value = -1;
+                        // roomSelectorNotifier.value = -1;
                       }
                     },
                   ),
