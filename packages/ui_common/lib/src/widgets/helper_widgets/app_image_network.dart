@@ -96,12 +96,14 @@ class AppImageNetwork extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textColor = Theme.of(context).textTheme.bodyMedium!.color!;
+    final themeBackgroundColor = Theme.of(context).colorScheme.background;
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         shape: shape,
         borderRadius: borderRadius,
-        color: backgroundColor ?? context.backgroundColor,
+        color: backgroundColor ?? themeBackgroundColor,
       ),
       child: imageUrl != null
           ? CachedNetworkImage(
@@ -109,32 +111,33 @@ class AppImageNetwork extends StatelessWidget {
               height: height,
               width: width,
               fit: fit,
-              placeholder: (context, url) =>
-                  loadingIndicator ??
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Icon(
-                        Icons.image,
-                        size: 18,
-                        color: context.textColor.withOpacity(.1),
-                      ),
-                      Center(
-                        child: CircularProgressIndicator(
-                          strokeWidth: 3,
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            context.textColor.withOpacity(.1),
+              placeholder: (context, url) {
+                return loadingIndicator ??
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Icon(
+                          Icons.image,
+                          size: (height ?? 36) * .5,
+                          color: textColor.withOpacity(.1),
+                        ),
+                        Center(
+                          child: CircularProgressIndicator(
+                            strokeWidth: 3,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              textColor.withOpacity(.1),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    );
+              },
               errorWidget: (_, __, ___) =>
                   errorWidget ??
                   Icon(
                     Icons.error_outline,
                     size: (height ?? 60.sp) * .5,
-                    color: context.textColor.withOpacity(.3),
+                    color: textColor.withOpacity(.3),
                   ),
             )
           : Center(
@@ -145,7 +148,7 @@ class AppImageNetwork extends StatelessWidget {
                     Icon(
                       Icons.error_outline,
                       size: (height ?? 60.sp) * .5,
-                      color: context.textColor.withOpacity(.3),
+                      color: textColor.withOpacity(.3),
                     ),
               ),
             ),

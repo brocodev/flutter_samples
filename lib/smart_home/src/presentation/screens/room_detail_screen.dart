@@ -49,6 +49,10 @@ class RoomDetailItems extends StatelessWidget {
     final outDx = 200 * animation.value;
     final outDy = 100 * animation.value;
     final sigma = 10 * animation.value;
+    final halfAnimation = CurvedAnimation(
+      parent: animation,
+      curve: const Interval(0.5, 1.0, curve: Curves.easeIn),
+    );
     return Hero(
       tag: room.id,
       child: Stack(
@@ -117,6 +121,32 @@ class RoomDetailItems extends StatelessWidget {
                         icon: const Icon(Icons.keyboard_arrow_left),
                         label: const Text('BACK'),
                       ),
+                    ),
+                  ),
+                  Expanded(
+                    child: PageView(
+                      children: [
+                        SingleChildScrollView(
+                          child: Padding(
+                            padding: edgeInsetsH20,
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: const [
+                                    Expanded(
+                                      child: Placeholder(fallbackHeight: 180),
+                                    ),
+                                    width20,
+                                    Expanded(
+                                      child: Placeholder(fallbackHeight: 180),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   )
                 ],
