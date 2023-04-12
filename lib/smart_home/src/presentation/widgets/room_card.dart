@@ -69,9 +69,9 @@ class RoomCard extends StatelessWidget {
                     builder: (context, _) => Material(
                       type: MaterialType.transparency,
                       child: RoomDetailItems(
-                        room: room,
-                        topPadding: context.mediaQuery.padding.top,
                         animation: animation,
+                        topPadding: context.mediaQuery.padding.top,
+                        room: room,
                       ),
                     ),
                   );

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
-/// Builder persistent header
+/// {@template [BuilderPersistentDelegate]}
+/// Builder persistent delegate, can be used to make complex animations with
+/// [CustomScrollView]
+/// {@endtemplate}
+///
 class BuilderPersistentDelegate extends SliverPersistentHeaderDelegate {
-  /// Builder persistent header
+  /// {@macro [BuilderPersistentDelegate]}
   BuilderPersistentDelegate({
     required double maxExtent,
     required double minExtent,
@@ -12,7 +16,9 @@ class BuilderPersistentDelegate extends SliverPersistentHeaderDelegate {
 
   final double _maxExtent;
   final double _minExtent;
-  /// Builder
+
+  /// Builder function that grants the percentage of change in the scroll of
+  /// the header, this value is useful for making animations
   final Widget Function(double percent) builder;
 
   @override
@@ -32,5 +38,5 @@ class BuilderPersistentDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
-      false;
+      this != oldDelegate;
 }
