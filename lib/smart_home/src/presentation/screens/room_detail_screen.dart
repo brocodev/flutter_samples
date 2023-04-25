@@ -1,11 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/parallax_image_card.dart';
+import 'package:flutter_samples/smart_home/core/core.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
-import 'package:flutter_samples/smart_home/src/presentation/views/room_details_page_view.dart';
-import 'package:flutter_samples/smart_home/src/presentation/widgets/room_card.dart';
-import 'package:flutter_samples/smart_home/src/presentation/widgets/sh_app_bar.dart';
+import 'package:flutter_samples/smart_home/src/presentation/presentation.dart';
 import 'package:ui_common/ui_common.dart';
 
 class RoomDetailScreen extends StatelessWidget {

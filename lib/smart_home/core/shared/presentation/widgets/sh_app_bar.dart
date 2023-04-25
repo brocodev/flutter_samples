@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/constants/icons.dart';
+import 'package:flutter_samples/smart_home/core/theme/icons.dart';
 import 'package:ui_common/ui_common.dart';
 
 class SHAppBar extends StatelessWidget implements PreferredSizeWidget {

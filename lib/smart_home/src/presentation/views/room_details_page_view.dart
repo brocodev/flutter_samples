@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/sh_card.dart';
 import 'package:ui_common/ui_common.dart';
 
 class RoomDetailsPageView extends StatelessWidget {
@@ -65,10 +66,7 @@ class RoomDetailsPageView extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              height: 180,
-                              color: Colors.grey,
-                            ),
+                            child: SHCard(),
                           ),
                           width20,
                           Expanded(

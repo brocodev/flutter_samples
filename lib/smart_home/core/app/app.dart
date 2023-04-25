@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_samples/smart_home/core/theme/theme.dart';
+import 'package:flutter_samples/smart_home/core/theme/sh_theme.dart';
 import 'package:flutter_samples/smart_home/src/presentation/screens/home_screen.dart';
 import 'package:ui_common/ui_common.dart';
 
