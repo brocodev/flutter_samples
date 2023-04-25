@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/constants/icons.dart';
-import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/lighted_background..dart';
-import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
-import 'package:flutter_samples/smart_home/src/presentation/views/smart_rooms_page_view.dart';
-import 'package:flutter_samples/smart_home/src/presentation/widgets/page_view_indicators.dart';
-import 'package:flutter_samples/smart_home/src/presentation/widgets/sh_app_bar.dart';
+import 'package:flutter_samples/smart_home/core/core.dart';
+import 'package:flutter_samples/smart_home/src/domain/entities/entities.dart';
+import 'package:flutter_samples/smart_home/src/presentation/presentation.dart';
 import 'package:ui_common/ui_common.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -85,7 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class _PageIndicators extends StatelessWidget {
   const _PageIndicators({
-    super.key,
     required this.roomSelectorNotifier,
     required this.pageNotifier,
   });
@@ -119,7 +115,6 @@ class _PageIndicators extends StatelessWidget {
 
 class _BottomNavigationBar extends StatelessWidget {
   const _BottomNavigationBar({
-    super.key,
     required this.roomSelectorNotifier,
   });
 

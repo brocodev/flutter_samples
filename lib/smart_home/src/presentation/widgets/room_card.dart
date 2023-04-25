@@ -1,13 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/constants/icons.dart';
-import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/parallax_image_card.dart';
-import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/shimmer_arrows.dart';
-import 'package:flutter_samples/smart_home/core/theme/colors.dart';
-import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
-import 'package:flutter_samples/smart_home/src/presentation/screens/room_detail_screen.dart';
-import 'package:flutter_samples/smart_home/src/presentation/widgets/background_room_card.dart';
+import 'package:flutter_samples/smart_home/core/core.dart';
+import 'package:flutter_samples/smart_home/src/domain/domain.dart';
+import 'package:flutter_samples/smart_home/src/presentation/presentation.dart';
 import 'package:ui_common/ui_common.dart';
 
 class RoomCard extends StatelessWidget {
