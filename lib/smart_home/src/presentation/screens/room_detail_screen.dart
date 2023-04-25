@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/parallax_image_card.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
+import 'package:flutter_samples/smart_home/src/presentation/views/room_details_page_view.dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/room_card.dart';
 import 'package:flutter_samples/smart_home/src/presentation/widgets/sh_app_bar.dart';
 import 'package:ui_common/ui_common.dart';
@@ -17,16 +18,9 @@ class RoomDetailScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: const SHAppBar(),
-      body: GestureDetector(
-        onVerticalDragUpdate: (details) {
-          if (details.primaryDelta! > 30) {
-            Navigator.pop(context);
-          }
-        },
-        child: RoomDetailItems(
-          topPadding: context.mediaQuery.padding.top,
-          room: room,
-        ),
+      body: RoomDetailItems(
+        topPadding: context.mediaQuery.padding.top,
+        room: room,
       ),
     );
   }
@@ -49,10 +43,6 @@ class RoomDetailItems extends StatelessWidget {
     final outDx = 200 * animation.value;
     final outDy = 100 * animation.value;
     final sigma = 10 * animation.value;
-    final halfAnimation = CurvedAnimation(
-      parent: animation,
-      curve: const Interval(0.5, 1.0, curve: Curves.easeIn),
-    );
     return Hero(
       tag: room.id,
       child: Stack(
@@ -67,10 +57,10 @@ class RoomDetailItems extends StatelessWidget {
             ),
           ),
           // --------------------------------------------
-          // Hided animated elements
+          // Animated output elements
           // --------------------------------------------
-          Opacity(
-            opacity: 1 - animation.value,
+          FadeTransition(
+            opacity: Tween<double>(begin: 1, end: 0).animate(animation),
             child: Stack(
               children: [
                 Transform.translate(
@@ -89,14 +79,14 @@ class RoomDetailItems extends StatelessWidget {
             ),
           ),
           // --------------------------------------------
-          // Room details animated elements
+          // Animated room controls
           // --------------------------------------------
-          Opacity(
-            opacity: animation.value,
+          FadeTransition(
+            opacity: animation,
             child: Container(
               transform:
                   Matrix4.translationValues(0, -200 * (1 - animation.value), 0),
-              padding: EdgeInsets.only(top: topPadding + 30),
+              padding: EdgeInsets.only(top: topPadding + 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -106,48 +96,8 @@ class RoomDetailItems extends StatelessWidget {
                     style: context.displaySmall.copyWith(height: .9),
                   ),
                   const Text('SETTINGS', textAlign: TextAlign.center),
-                  height8,
-                  Transform.translate(
-                    offset: Offset(
-                      lerpDouble(-100, 20, animation.value)!,
-                      100 * (1 - animation.value),
-                    ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextButton.icon(
-                        onPressed: () => Navigator.pop(context),
-                        style: TextButton.styleFrom(
-                            alignment: Alignment.centerLeft),
-                        icon: const Icon(Icons.keyboard_arrow_left),
-                        label: const Text('BACK'),
-                      ),
-                    ),
-                  ),
                   Expanded(
-                    child: PageView(
-                      children: [
-                        SingleChildScrollView(
-                          child: Padding(
-                            padding: edgeInsetsH20,
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: const [
-                                    Expanded(
-                                      child: Placeholder(fallbackHeight: 180),
-                                    ),
-                                    width20,
-                                    Expanded(
-                                      child: Placeholder(fallbackHeight: 180),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: RoomDetailsPageView(animation: animation),
                   )
                 ],
               ),

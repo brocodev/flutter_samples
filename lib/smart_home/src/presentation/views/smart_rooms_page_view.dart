@@ -68,7 +68,7 @@ class SmartRoomsPageView extends StatelessWidget {
                             ),
                           ),
                         );
-                        // roomSelectorNotifier.value = -1;
+                        roomSelectorNotifier.value = -1;
                       }
                     },
                   ),
