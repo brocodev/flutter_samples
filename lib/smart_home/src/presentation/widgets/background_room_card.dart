@@ -36,19 +36,19 @@ class BackgroundRoomCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _RoomInfoRow(
-            icon: const Icon(Icons.device_thermostat),
+            icon: const Icon(SHIcons.thermostat),
             label: const Text('Temperature'),
             data: '${room.temperature}°',
           ),
           height4,
           _RoomInfoRow(
-            icon: const Icon(Icons.water_drop_outlined),
+            icon: const Icon(SHIcons.waterDrop),
             label: const Text('Air Humidity'),
             data: '${room.airHumidity}%',
           ),
           height4,
           const _RoomInfoRow(
-            icon: Icon(Icons.timer_outlined),
+            icon: Icon(SHIcons.timer),
             label: Text('Timer'),
             data: null,
           ),
@@ -61,7 +61,7 @@ class BackgroundRoomCard extends StatelessWidget {
               children: [
                 _DeviceIconSwitcher(
                   onTap: (value) {},
-                  icon: const Icon(SHIcons.lightBulb),
+                  icon: const Icon(SHIcons.lightBulbOutline),
                   label: const Text('Lights'),
                   value: room.lights.isOn,
                 ),

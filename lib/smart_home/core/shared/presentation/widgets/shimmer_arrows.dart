@@ -44,9 +44,9 @@ class _ShimmerArrowsState extends State<ShimmerArrows>
       ),
       child: Column(
         children: const [
-          Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
-          Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
-          Align(heightFactor: .4, child: Icon(SHIcons.arrow_up)),
+          Align(heightFactor: .4, child: Icon(SHIcons.arrowUp)),
+          Align(heightFactor: .4, child: Icon(SHIcons.arrowUp)),
+          Align(heightFactor: .4, child: Icon(SHIcons.arrowUp)),
         ],
       ),
     );

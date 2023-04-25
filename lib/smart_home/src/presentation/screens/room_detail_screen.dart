@@ -95,7 +95,10 @@ class RoomDetailItems extends StatelessWidget {
                   ),
                   const Text('SETTINGS', textAlign: TextAlign.center),
                   Expanded(
-                    child: RoomDetailsPageView(animation: animation),
+                    child: RoomDetailsPageView(
+                      animation: animation,
+                      room: room,
+                    ),
                   )
                 ],
               ),

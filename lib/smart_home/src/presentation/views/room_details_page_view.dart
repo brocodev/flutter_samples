@@ -1,16 +1,18 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/sh_card.dart';
+import 'package:flutter_samples/smart_home/core/core.dart';
+import 'package:flutter_samples/smart_home/src/domain/domain.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_common/ui_common.dart';
 
 class RoomDetailsPageView extends StatelessWidget {
   const RoomDetailsPageView({
     super.key,
     required this.animation,
+    required this.room,
   });
 
   final Animation<double> animation;
+  final SmartRoom room;
 
   Animation<double> get _interval1 => CurvedAnimation(
         parent: animation,
@@ -29,19 +31,15 @@ class RoomDetailsPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final animation2 = CurvedAnimation(
-      parent: animation,
-      curve: Curves.easeInQuad,
-    );
     return PageView(
       children: [
         Column(
           children: [
-            Transform.translate(
-              offset: Offset(
-                lerpDouble(-100, 10, animation2.value)!,
-                100 * (1 - animation2.value),
-              ),
+            SlideTransition(
+              position: Tween(
+                begin: const Offset(-1, 1),
+                end: Offset.zero,
+              ).animate(animation),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: TextButton.icon(
@@ -63,19 +61,24 @@ class RoomDetailsPageView extends StatelessWidget {
                     ).animate(_interval1),
                     child: FadeTransition(
                       opacity: _interval1,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: SHCard(),
-                          ),
-                          width20,
-                          Expanded(
-                            child: Container(
-                              height: 180,
-                              color: Colors.grey,
+                      child: DefaultTextStyle(
+                        style: GoogleFonts.montserrat(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: LightsAndTimerCard(room: room),
                             ),
-                          ),
-                        ],
+                            width20,
+                            Expanded(
+                              child: SHCard(
+                                height: 180,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -87,9 +90,8 @@ class RoomDetailsPageView extends StatelessWidget {
                     ).animate(_interval2),
                     child: FadeTransition(
                       opacity: _interval2,
-                      child: Container(
+                      child: SHCard(
                         height: 180,
-                        color: Colors.grey,
                       ),
                     ),
                   ),
@@ -101,14 +103,56 @@ class RoomDetailsPageView extends StatelessWidget {
                     ).animate(_interval1),
                     child: FadeTransition(
                       opacity: _interval3,
-                      child: Container(
+                      child: SHCard(
                         height: 180,
-                        color: Colors.grey,
                       ),
                     ),
                   ),
                 ],
               ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class LightsAndTimerCard extends StatelessWidget {
+  const LightsAndTimerCard({
+    super.key,
+    required this.room,
+  });
+
+  final SmartRoom room;
+
+  @override
+  Widget build(BuildContext context) {
+    return SHCard(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Lights'),
+            height8,
+            SHSwitch(
+              value: room.lights.isOn,
+              onChanged: (value) {},
+              icon: const Icon(SHIcons.lightBulbOutline),
+            ),
+            height8,
+          ],
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            height8,
+            const Text('Timer'),
+            height8,
+            SHSwitch(
+              icon: const Icon(SHIcons.timerOff),
+              value: false,
+              onChanged: (value) {},
             ),
           ],
         ),

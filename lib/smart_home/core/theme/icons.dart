@@ -9,8 +9,13 @@ abstract class SHIcons {
   static const IconData home = CupertinoIcons.home;
   static const IconData settings = CupertinoIcons.settings;
   static const IconData camera = CupertinoIcons.camera_fill;
-  static const IconData arrow_up = Icons.keyboard_arrow_up;
+  static const IconData arrowUp = Icons.keyboard_arrow_up;
   static const IconData fan = FontAwesome5.fan;
-  static const IconData lightBulb = Icons.lightbulb_outline;
+  static const IconData lightBulbOutline = Icons.lightbulb_outline;
+  static const IconData lightBulb = Icons.lightbulb;
   static const IconData music = Icons.music_note;
+  static const IconData thermostat = Icons.device_thermostat;
+  static const IconData waterDrop = Icons.water_drop_outlined;
+  static const IconData timer = Icons.timer_outlined;
+  static const IconData timerOff = Icons.timer_off_outlined;
 }
