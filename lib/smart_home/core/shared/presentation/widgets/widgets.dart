@@ -1,4 +1,4 @@
-export 'lighted_background..dart';
+export 'blue_light_dot.dart';
 export 'parallax_image_card.dart';
 export 'sh_app_bar.dart';
 export 'sh_card.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/smart_home/core/core.dart';
 import 'package:flutter_samples/smart_home/src/domain/domain.dart';
+import 'package:flutter_samples/smart_home/src/presentation/widgets/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_common/ui_common.dart';
 
@@ -21,12 +22,12 @@ class RoomDetailsPageView extends StatelessWidget {
 
   Animation<double> get _interval2 => CurvedAnimation(
         parent: animation,
-        curve: const Interval(0.5, 1.0, curve: Curves.easeIn),
+        curve: const Interval(0.6, 1.0, curve: Curves.easeIn),
       );
 
   Animation<double> get _interval3 => CurvedAnimation(
         parent: animation,
-        curve: const Interval(0.6, 1.0, curve: Curves.easeIn),
+        curve: const Interval(0.8, 1.0, curve: Curves.easeIn),
       );
 
   @override
@@ -69,14 +70,10 @@ class RoomDetailsPageView extends StatelessWidget {
                         child: Row(
                           children: [
                             Expanded(
-                              child: LightsAndTimerCard(room: room),
+                              child: LightsAndTimerSwitchers(room: room),
                             ),
                             width20,
-                            Expanded(
-                              child: SHCard(
-                                height: 180,
-                              ),
-                            ),
+                            const Expanded(child: SHCard(height: 180)),
                           ],
                         ),
                       ),
@@ -90,9 +87,7 @@ class RoomDetailsPageView extends StatelessWidget {
                     ).animate(_interval2),
                     child: FadeTransition(
                       opacity: _interval2,
-                      child: SHCard(
-                        height: 180,
-                      ),
+                      child: const SHCard(height: 180),
                     ),
                   ),
                   height20,
@@ -103,56 +98,11 @@ class RoomDetailsPageView extends StatelessWidget {
                     ).animate(_interval1),
                     child: FadeTransition(
                       opacity: _interval3,
-                      child: SHCard(
-                        height: 180,
-                      ),
+                      child: const SHCard(height: 180),
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class LightsAndTimerCard extends StatelessWidget {
-  const LightsAndTimerCard({
-    super.key,
-    required this.room,
-  });
-
-  final SmartRoom room;
-
-  @override
-  Widget build(BuildContext context) {
-    return SHCard(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Lights'),
-            height8,
-            SHSwitch(
-              value: room.lights.isOn,
-              onChanged: (value) {},
-              icon: const Icon(SHIcons.lightBulbOutline),
-            ),
-            height8,
-          ],
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            height8,
-            const Text('Timer'),
-            height8,
-            SHSwitch(
-              icon: const Icon(SHIcons.timerOff),
-              value: false,
-              onChanged: (value) {},
             ),
           ],
         ),

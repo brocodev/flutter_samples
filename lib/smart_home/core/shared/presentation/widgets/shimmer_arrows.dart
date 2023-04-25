@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/theme/icons.dart';
+import 'package:flutter_samples/smart_home/core/theme/sh_icons.dart';
 
 class ShimmerArrows extends StatefulWidget {
   const ShimmerArrows({super.key});

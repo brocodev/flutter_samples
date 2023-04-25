@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/theme/colors.dart';
+import 'package:flutter_samples/smart_home/core/theme/sh_colors.dart';
 import 'package:ui_common/ui_common.dart';
 
 class ParallaxImageCard extends StatelessWidget {

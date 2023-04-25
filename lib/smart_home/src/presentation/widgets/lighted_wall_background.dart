@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/theme/colors.dart';
+import 'package:flutter_samples/smart_home/core/theme/sh_colors.dart';
 
 class LightedBackground extends StatelessWidget {
   const LightedBackground({

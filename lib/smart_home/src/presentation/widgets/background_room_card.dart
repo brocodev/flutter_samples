@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/smart_home/core/shared/presentation/widgets/sh_divider.dart';
-import 'package:flutter_samples/smart_home/core/theme/colors.dart';
-import 'package:flutter_samples/smart_home/core/theme/icons.dart';
+import 'package:flutter_samples/smart_home/core/core.dart';
 import 'package:flutter_samples/smart_home/src/domain/entities/smart_room.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_common/ui_common.dart';
@@ -167,21 +165,7 @@ class _RoomInfoRow extends StatelessWidget {
               )
             : Row(
                 children: [
-                  SizedBox.square(
-                    dimension: 8.sp,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: Colors.cyan,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.cyan.withOpacity(.6),
-                            blurRadius: 5,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                  BlueLightDot(),
                   width4,
                   Text(
                     'OFF',
