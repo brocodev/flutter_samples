@@ -17,33 +17,38 @@ class SHSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        if (icon != null) ...[
-          IconTheme(
-            data: IconThemeData(
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (icon != null) ...[
+            IconTheme(
+              data: IconThemeData(
+                color: value ? SHColors.selectedColor : Colors.white38,
+              ),
+              child: icon!,
+            ),
+            width8,
+          ],
+          CupertinoSwitch(
+            trackColor: SHColors.trackColor,
+            activeColor: SHColors.trackColor,
+            thumbColor: value ? null : Colors.white60,
+            value: value,
+            onChanged: onChanged,
+          ),
+          width8,
+          Text(
+            value ? 'ON' : 'OFF',
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w900,
               color: value ? SHColors.selectedColor : Colors.white38,
             ),
-            child: icon!,
-          ),
+          )
         ],
-        CupertinoSwitch(
-          trackColor: SHColors.trackColor,
-          activeColor: SHColors.trackColor,
-          thumbColor: value ? null : Colors.white60,
-          value: value,
-          onChanged: onChanged,
-        ),
-        Text(
-          value ? 'ON' : 'OFF',
-          style: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w900,
-            color: value ? SHColors.selectedColor : Colors.white38,
-          ),
-        )
-      ],
+      ),
     );
   }
 }

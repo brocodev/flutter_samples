@@ -21,7 +21,7 @@ class MusicSwitchers extends StatelessWidget {
       childrenPadding: edgeInsetsA12,
       children: [
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
               children: const [
