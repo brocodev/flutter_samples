@@ -33,6 +33,7 @@ class RoomDetailsPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView(
+      physics: const BouncingScrollPhysics(),
       children: [
         Column(
           children: [
@@ -53,6 +54,7 @@ class RoomDetailsPageView extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 padding: edgeInsetsA20.copyWith(top: 0),
                 children: [
                   SlideTransition(
@@ -73,7 +75,7 @@ class RoomDetailsPageView extends StatelessWidget {
                               child: LightsAndTimerSwitchers(room: room),
                             ),
                             width20,
-                            const Expanded(child: SHCard(height: 180)),
+                            Expanded(child: MusicSwitchers(room: room)),
                           ],
                         ),
                       ),

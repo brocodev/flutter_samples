@@ -10,6 +10,7 @@ class SmartRoom {
     required this.airHumidity,
     required this.lights,
     required this.airCondition,
+    required this.timer,
     required this.musicInfo,
   });
 
@@ -20,6 +21,7 @@ class SmartRoom {
   final double airHumidity;
   final SmartDevice lights;
   final SmartDevice airCondition;
+  final SmartDevice timer;
   final MusicInfo musicInfo;
 
   SmartRoom copyWith({
@@ -30,6 +32,7 @@ class SmartRoom {
     double? airHumidity,
     SmartDevice? lights,
     SmartDevice? airCondition,
+    SmartDevice? timer,
     MusicInfo? musicInfo,
   }) =>
       SmartRoom(
@@ -41,6 +44,7 @@ class SmartRoom {
         lights: lights ?? this.lights,
         airCondition: airCondition ?? this.airCondition,
         musicInfo: musicInfo ?? this.musicInfo,
+        timer: timer ?? this.timer,
       );
 
   static List<SmartRoom> fakeValues = [
@@ -59,8 +63,12 @@ final _room = SmartRoom(
   temperature: 12,
   airHumidity: 23,
   lights: SmartDevice(isOn: true, value: 20),
+  timer: SmartDevice(isOn: false, value: 20),
   airCondition: SmartDevice(isOn: false, value: 10),
-  musicInfo: MusicInfo(isOn: false, currentSong: Song()),
+  musicInfo: MusicInfo(
+    isOn: false,
+    currentSong: Song.defaultSong,
+  ),
 );
 
 const _imagesUrls = [

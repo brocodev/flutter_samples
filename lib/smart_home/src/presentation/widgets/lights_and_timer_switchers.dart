@@ -42,8 +42,10 @@ class LightsAndTimerSwitchers extends StatelessWidget {
             ),
             height8,
             SHSwitch(
-              icon: const Icon(SHIcons.timerOff),
-              value: false,
+              icon: room.timer.isOn
+                  ? const Icon(SHIcons.timer)
+                  : const Icon(SHIcons.timerOff),
+              value: room.timer.isOn,
               onChanged: (value) {},
             ),
             height4,
