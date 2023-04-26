@@ -18,11 +18,11 @@ class MusicSwitchers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SHCard(
+      childrenPadding: edgeInsetsA12,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            height4,
             Row(
               children: const [
                 Text('Music'),
@@ -31,18 +31,16 @@ class MusicSwitchers extends StatelessWidget {
               ],
             ),
             height8,
-            SHSwitch(
+            SHSwitcher(
               value: room.musicInfo.isOn,
               icon: const Icon(SHIcons.music),
               onChanged: (value) {},
             ),
-            height16,
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            height12,
             Text(
               room.musicInfo.currentSong.title,
               maxLines: 1,
@@ -58,25 +56,22 @@ class MusicSwitchers extends StatelessWidget {
               ),
             ),
             IconTheme(
-              data: IconThemeData(size: 28.sp, color: Colors.white),
-              child: FittedBox(
-                alignment: Alignment.center,
-                fit: BoxFit.scaleDown,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.fast_rewind),
-                    width8,
-                    room.musicInfo.isOn
+              data: IconThemeData(size: 20.sp, color: Colors.white),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Flexible(child: Icon(Icons.fast_rewind)),
+                  width8,
+                  Flexible(
+                    child: room.musicInfo.isOn
                         ? const Icon(Icons.pause)
                         : const Icon(Icons.play_arrow),
-                    width8,
-                    const Icon(Icons.fast_forward),
-                  ],
-                ),
+                  ),
+                  width8,
+                  const Flexible(child: Icon(Icons.fast_forward)),
+                ],
               ),
             ),
-            height4,
           ],
         ),
       ],

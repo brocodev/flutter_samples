@@ -49,6 +49,12 @@ abstract class SHTheme {
         ),
       ),
     ),
+    sliderTheme: SliderThemeData(
+      activeTrackColor: SHColors.selectedColor,
+      inactiveTrackColor: SHColors.trackColor,
+      thumbColor: SHColors.selectedColor,
+      trackHeight: 2.sp,
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.transparent,
       elevation: 0,

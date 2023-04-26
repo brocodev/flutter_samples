@@ -14,25 +14,23 @@ class LightsAndTimerSwitchers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SHCard(
+      childrenPadding: edgeInsetsA12,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            height4,
             const Text('Lights'),
             height8,
-            SHSwitch(
+            SHSwitcher(
               value: room.lights.isOn,
               onChanged: (value) {},
               icon: const Icon(SHIcons.lightBulbOutline),
             ),
-            height16,
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            height16,
             Row(
               children: const [
                 Text('Timer'),
@@ -41,14 +39,13 @@ class LightsAndTimerSwitchers extends StatelessWidget {
               ],
             ),
             height8,
-            SHSwitch(
+            SHSwitcher(
               icon: room.timer.isOn
                   ? const Icon(SHIcons.timer)
                   : const Icon(SHIcons.timerOff),
               value: room.timer.isOn,
               onChanged: (value) {},
             ),
-            height4,
           ],
         ),
       ],

@@ -5,7 +5,7 @@ import 'package:flutter_samples/smart_home/src/presentation/screens/home_screen.
 import 'package:ui_common/ui_common.dart';
 
 class SmartHomeApp extends StatelessWidget {
-  const SmartHomeApp({Key? key}) : super(key: key);
+  const SmartHomeApp({super.key});
 
   @override
   Widget build(BuildContext context) {

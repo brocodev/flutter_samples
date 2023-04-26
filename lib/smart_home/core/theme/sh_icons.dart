@@ -18,4 +18,9 @@ abstract class SHIcons {
   static const IconData waterDrop = Icons.water_drop_outlined;
   static const IconData timer = Icons.timer_outlined;
   static const IconData timerOff = Icons.timer_off_outlined;
+  static const IconData lightMin = Icons.light_mode_outlined;
+  static const IconData lightMax = Icons.light_mode;
+  static const IconData snowFlake = CupertinoIcons.snow;
+  static const IconData wind = CupertinoIcons.wind;
+  static const IconData air = FontAwesome5.air_freshener;
 }

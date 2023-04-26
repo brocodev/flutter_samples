@@ -7,9 +7,9 @@ import 'package:ui_common/ui_common.dart';
 
 class ParallaxImageCard extends StatelessWidget {
   const ParallaxImageCard({
-    super.key,
     required this.imageUrl,
     this.parallaxValue = 0,
+    super.key,
   });
 
   final String imageUrl;

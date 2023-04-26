@@ -8,10 +8,12 @@ class SHCard extends StatelessWidget {
     super.key,
     this.height,
     this.children = const [],
+    this.childrenPadding = EdgeInsets.zero,
   });
 
   final double? height;
   final List<Widget> children;
+  final EdgeInsets childrenPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +27,19 @@ class SHCard extends StatelessWidget {
         ),
         boxShadow: const [
           BoxShadow(
-            color: Colors.black26,
+            color: Colors.black38,
             blurRadius: 20,
-            offset: Offset(-5, 5),
+            offset: Offset(-10, 10),
           )
         ],
         borderRadius: borderRadiusA12,
       ),
-      padding: edgeInsetsV12,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           for (int index = 0; index < children.length; index++) ...[
             Padding(
-              padding: edgeInsetsH12,
+              padding: childrenPadding,
               child: children[index],
             ),
             if (index < children.length - 1) const SHDivider(),
