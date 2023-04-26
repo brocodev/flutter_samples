@@ -36,22 +36,28 @@ class AirConditionerControlsCard extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Icon(SHIcons.waterDrop, color: Colors.white38),
-                      width8,
-                      Text(
-                        'Air humidity',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 10.sp,
-                          color: Colors.white60,
-                          fontWeight: FontWeight.w500,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Icon(
+                          SHIcons.waterDrop,
+                          color: Colors.white38,
+                          size: 20,
                         ),
-                      ),
-                      width8,
-                      Text('${room.airHumidity.toInt()}%'),
-                    ],
+                        Text(
+                          'Air humidity',
+                          style: GoogleFonts.montserrat(
+                            fontSize: 10.sp,
+                            color: Colors.white60,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        width8,
+                        Text('${room.airHumidity.toInt()}%'),
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -64,9 +70,7 @@ class AirConditionerControlsCard extends StatelessWidget {
 }
 
 class _AirIcons extends StatelessWidget {
-  const _AirIcons({
-    super.key,
-  });
+  const _AirIcons();
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +93,6 @@ class _AirIcons extends StatelessWidget {
 
 class _AirSwitcher extends StatelessWidget {
   const _AirSwitcher({
-    super.key,
     required this.room,
   });
 
@@ -100,7 +103,7 @@ class _AirSwitcher extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Air conditioner'),
+        const Text('Air conditioning'),
         height12,
         Row(
           children: [
