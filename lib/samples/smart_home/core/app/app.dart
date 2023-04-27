@@ -13,7 +13,7 @@ class SmartHomeApp extends StatelessWidget {
       SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
     );
     return ScreenUtilInit(
-      builder: (context, child) => MaterialApp(
+      builder: (_, child) => MaterialApp(
         title: 'Smart Home App',
         debugShowCheckedModeBanner: false,
         theme: SHTheme.dark,

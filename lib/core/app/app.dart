@@ -12,12 +12,20 @@ class SamplesApp extends StatelessWidget {
       title: 'Broco Samples App',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade50,
+        appBarTheme: AppBarTheme(
+          elevation: 0,
+          titleTextStyle: GoogleFonts.poppins(
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+            color: Colors.grey.shade800,
+          ),
+          backgroundColor: Colors.grey.shade50,
+        ),
         colorScheme: ColorScheme.fromSwatch(
           backgroundColor: Colors.grey.shade50,
         ),
         textTheme: GoogleFonts.poppinsTextTheme(),
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.green,
       ),
       initialRoute: '/',
       routes: AppRoutes.routes,
