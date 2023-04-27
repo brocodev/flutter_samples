@@ -1,6 +1,10 @@
 # flutter_samples
 
-A new Flutter project.
+This is a project created to develop sample apps and widgets developed with flutter.
+
+# My Social Media
+
+#### <img src="https://i.ibb.co/Js7Gh5N/youtube.png" height="12"/>   [Youtube](https://www.youtube.com/channel/UCe2G2ZkcHG9TliZ03L14U7g) <img src="https://i.ibb.co/c8JfWMM/facebook.png" height="12"/>   [Facebook](https://www.facebook.com/brocodev)  <img src="https://i.ibb.co/MSN1F6L/gorjeo.png" height="12"/>   [Twitter](https://twitter.com/brocodev1)
 
 ## Getting Started
 
