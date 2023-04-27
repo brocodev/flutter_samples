@@ -28,7 +28,6 @@ class _ShimmerArrowsState extends State<ShimmerArrows>
   Gradient get gradient => LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
-        tileMode: TileMode.clamp,
         colors: const [Colors.white10, Colors.white, Colors.white10],
         stops: const [0.0, 0.3, 1],
         transform: _SlideGradientTransform(_controller.value),
@@ -60,5 +59,5 @@ class _SlideGradientTransform extends GradientTransform {
 
   @override
   Matrix4? transform(Rect bounds, {TextDirection? textDirection}) =>
-      Matrix4.translationValues(0.0, -(bounds.height * percent), 0.0);
+      Matrix4.translationValues(0, -(bounds.height * percent), 0);
 }

@@ -5,9 +5,9 @@ import 'package:ui_common/ui_common.dart';
 
 class BackgroundRoomCard extends StatelessWidget {
   const BackgroundRoomCard({
-    super.key,
     required this.room,
     required this.translation,
+    super.key,
   });
 
   final SmartRoom room;
@@ -154,28 +154,29 @@ class _RoomInfoRow extends StatelessWidget {
             child: label,
           ),
         ),
-        data != null
-            ? Text(
-                data!,
+        if (data != null)
+          Text(
+            data!,
+            style: GoogleFonts.montserrat(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w700,
+            ),
+          )
+        else
+          Row(
+            children: [
+              const BlueLightDot(),
+              width4,
+              Text(
+                'OFF',
                 style: GoogleFonts.montserrat(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 12.sp,
+                  color: SHColors.textColor.withOpacity(.6),
                 ),
-              )
-            : Row(
-                children: [
-                  BlueLightDot(),
-                  width4,
-                  Text(
-                    'OFF',
-                    style: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 12.sp,
-                      color: SHColors.textColor.withOpacity(.6),
-                    ),
-                  ),
-                ],
               ),
+            ],
+          ),
         width32,
       ],
     );

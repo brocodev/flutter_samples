@@ -6,7 +6,6 @@ import 'package:ui_common/ui_common.dart';
 class AppImageNetwork extends StatelessWidget {
   /// Custom image network widget.
   const AppImageNetwork({
-    Key? key,
     required this.imageUrl,
     this.height,
     this.width,
@@ -16,7 +15,8 @@ class AppImageNetwork extends StatelessWidget {
     this.backgroundColor,
     this.shape = BoxShape.rectangle,
     this.errorWidget,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Image network with a box shape.
   factory AppImageNetwork.box({

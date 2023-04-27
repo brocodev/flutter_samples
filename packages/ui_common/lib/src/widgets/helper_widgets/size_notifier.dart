@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 class SizeNotifierWidget extends StatefulWidget {
   /// {@macro [SizeNotifierWidget]}
   const SizeNotifierWidget({
-    Key? key,
     required this.child,
     required this.onSizeChange,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Child of the widget
   final Widget child;

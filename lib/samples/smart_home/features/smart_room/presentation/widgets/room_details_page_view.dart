@@ -16,17 +16,17 @@ class RoomDetailsPageView extends StatelessWidget {
 
   Animation<double> get _interval1 => CurvedAnimation(
         parent: animation,
-        curve: const Interval(0.4, 1.0, curve: Curves.easeIn),
+        curve: const Interval(0.4, 1, curve: Curves.easeIn),
       );
 
   Animation<double> get _interval2 => CurvedAnimation(
         parent: animation,
-        curve: const Interval(0.6, 1.0, curve: Curves.easeIn),
+        curve: const Interval(0.6, 1, curve: Curves.easeIn),
       );
 
   Animation<double> get _interval3 => CurvedAnimation(
         parent: animation,
-        curve: const Interval(0.8, 1.0, curve: Curves.easeIn),
+        curve: const Interval(0.8, 1, curve: Curves.easeIn),
       );
 
   @override

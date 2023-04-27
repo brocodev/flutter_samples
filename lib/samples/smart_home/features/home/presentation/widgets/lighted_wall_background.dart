@@ -3,9 +3,9 @@ import 'package:flutter_samples/samples/smart_home/core/theme/sh_colors.dart';
 
 class LightedBackground extends StatelessWidget {
   const LightedBackground({
-    Key? key,
     required this.child,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Widget child;
 
@@ -27,7 +27,7 @@ class LightedBackground extends StatelessWidget {
             child: const DecoratedBox(
               decoration: BoxDecoration(
                 gradient: RadialGradient(
-                  focal: Alignment(0, -1),
+                  focal: Alignment.topCenter,
                   center: Alignment(0, -.55),
                   colors: SHColors.dimmedLightColors,
                 ),

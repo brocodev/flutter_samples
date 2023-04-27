@@ -39,9 +39,9 @@ class SmartRoomsPageView extends StatelessWidget {
               clipBehavior: Clip.none,
               itemCount: SmartRoom.fakeValues.length,
               itemBuilder: (__, index) {
-                final percent = (page - index);
+                final percent = page - index;
                 final isSelected = selected == index;
-                var room = SmartRoom.fakeValues[index];
+                final room = SmartRoom.fakeValues[index];
                 return AnimatedContainer(
                   duration: kThemeAnimationDuration,
                   curve: Curves.fastOutSlowIn,
@@ -57,7 +57,7 @@ class SmartRoomsPageView extends StatelessWidget {
                       if (isSelected) {
                         await Navigator.push(
                           context,
-                          PageRouteBuilder(
+                          PageRouteBuilder<void>(
                             transitionDuration:
                                 const Duration(milliseconds: 800),
                             reverseTransitionDuration:

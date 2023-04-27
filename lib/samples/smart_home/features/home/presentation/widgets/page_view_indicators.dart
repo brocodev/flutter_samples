@@ -4,10 +4,10 @@ import 'package:ui_common/ui_common.dart';
 
 class PageViewIndicators extends StatelessWidget {
   const PageViewIndicators({
-    Key? key,
     required this.length,
     required this.pageIndex,
-  }) : super(key: key);
+    super.key,
+  });
 
   final int length;
   final double pageIndex;
@@ -43,9 +43,7 @@ class PageViewIndicators extends StatelessWidget {
 }
 
 class _BorderDot extends StatelessWidget {
-  const _BorderDot({
-    Key? key,
-  }) : super(key: key);
+  const _BorderDot();
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +60,7 @@ class _BorderDot extends StatelessWidget {
 }
 
 class _Dot extends StatelessWidget {
-  const _Dot({
-    Key? key,
-  }) : super(key: key);
+  const _Dot();
 
   @override
   Widget build(BuildContext context) {

@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ResponsiveBox extends StatelessWidget {
   /// [SizedBox] implementation with responsive values
   const ResponsiveBox({
-    Key? key,
     this.child,
     this.height,
     this.width,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Creates a box whose [width] and [height] are equal.
   const ResponsiveBox.square({super.key, this.child, double? dimension})

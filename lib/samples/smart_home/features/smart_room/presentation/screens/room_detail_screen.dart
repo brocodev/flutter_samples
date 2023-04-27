@@ -7,7 +7,10 @@ import 'package:flutter_samples/samples/smart_home/features/smart_room/presentat
 import 'package:ui_common/ui_common.dart';
 
 class RoomDetailScreen extends StatelessWidget {
-  const RoomDetailScreen({super.key, required this.room});
+  const RoomDetailScreen({
+    required this.room,
+    super.key,
+  });
 
   final SmartRoom room;
 
@@ -26,10 +29,10 @@ class RoomDetailScreen extends StatelessWidget {
 
 class RoomDetailItems extends StatelessWidget {
   const RoomDetailItems({
-    super.key,
-    this.animation = const AlwaysStoppedAnimation<double>(1),
     required this.room,
     required this.topPadding,
+    this.animation = const AlwaysStoppedAnimation<double>(1),
+    super.key,
   });
 
   final Animation<double> animation;

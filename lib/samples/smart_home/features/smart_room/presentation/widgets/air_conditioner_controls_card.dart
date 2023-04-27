@@ -5,8 +5,8 @@ import 'package:ui_common/ui_common.dart';
 
 class AirConditionerControlsCard extends StatelessWidget {
   const AirConditionerControlsCard({
-    super.key,
     required this.room,
+    super.key,
   });
 
   final SmartRoom room;

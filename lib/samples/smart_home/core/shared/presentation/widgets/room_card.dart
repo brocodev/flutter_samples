@@ -8,13 +8,13 @@ import 'package:ui_common/ui_common.dart';
 
 class RoomCard extends StatelessWidget {
   const RoomCard({
-    super.key,
     required this.percent,
     required this.room,
     required this.expand,
     required this.onSwipeUp,
     required this.onSwipeDown,
     required this.onTap,
+    super.key,
   });
 
   final double percent;
@@ -36,7 +36,7 @@ class RoomCard extends StatelessWidget {
           // Background information card
           // -----------------------------------------------
           Transform.scale(
-            scale: lerpDouble(.85, 1.2, value)!,
+            scale: lerpDouble(.85, 1.2, value),
             child: Padding(
               padding: EdgeInsets.only(bottom: 160.h),
               child: BackgroundRoomCard(room: room, translation: value),
@@ -132,7 +132,7 @@ class CameraIconButton extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: Align(
-        alignment: const Alignment(1, -1),
+        alignment: Alignment.topRight,
         child: IconButton(
           onPressed: () {},
           icon: const Icon(
@@ -147,8 +147,8 @@ class CameraIconButton extends StatelessWidget {
 
 class VerticalRoomTitle extends StatelessWidget {
   const VerticalRoomTitle({
-    super.key,
     required this.room,
+    super.key,
   });
 
   final SmartRoom room;

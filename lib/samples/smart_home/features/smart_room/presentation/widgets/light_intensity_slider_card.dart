@@ -4,8 +4,8 @@ import 'package:ui_common/ui_common.dart';
 
 class LightIntensitySliderCard extends StatelessWidget {
   const LightIntensitySliderCard({
-    super.key,
     required this.room,
+    super.key,
   });
 
   final SmartRoom room;
@@ -35,7 +35,6 @@ class LightIntensitySliderCard extends StatelessWidget {
 
 class _LightSwitcher extends StatelessWidget {
   const _LightSwitcher({
-    super.key,
     required this.room,
   });
 

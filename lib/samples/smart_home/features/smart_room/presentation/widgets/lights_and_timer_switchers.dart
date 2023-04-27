@@ -4,8 +4,8 @@ import 'package:ui_common/ui_common.dart';
 
 class LightsAndTimerSwitchers extends StatelessWidget {
   const LightsAndTimerSwitchers({
-    super.key,
     required this.room,
+    super.key,
   });
 
   final SmartRoom room;
