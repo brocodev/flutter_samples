@@ -15,7 +15,7 @@ class SampleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220,
+      height: sample.heightCard,
       clipBehavior: Clip.antiAlias,
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
