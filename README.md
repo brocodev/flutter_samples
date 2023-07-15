@@ -18,3 +18,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## 1 - Smart Home App
+ | Parallax Effect, Implicit Animations & Custom Hero Transition |
+ |----------------------|
+ |<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzIxZjUxYzg1MTY1MTYyOTFjZGI5YjJmNGE0ZmU1N2RmNTc5NGM0OCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/XyBxnyCPsXYMNshv7J/giphy.gif" width="500" >|
+
+### [Design Credits](https://www.instagram.com/p/B-SrHZTiWMr/?hl=es) <img src="https://i.ibb.co/dK1QRMq/logo-instagram-icon.png"  width="16">
