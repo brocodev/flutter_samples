@@ -17,7 +17,7 @@ class Sample {
 
   static const smartHome = Sample._(
     title: 'Smart Home',
-    description: 'Flutter UI + Hero Animations',
+    description: 'Parallax Effect + Animations + Custom Hero ',
     designer: 'giulio_cuscito',
     pathImage: 'assets/img/samples/smart_home.gif',
     route: 'smart_home',
