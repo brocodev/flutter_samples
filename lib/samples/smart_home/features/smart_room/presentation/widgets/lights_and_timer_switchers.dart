@@ -30,8 +30,8 @@ class LightsAndTimerSwitchers extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: const [
+            const Row(
+              children: [
                 Text('Timer'),
                 Spacer(),
                 BlueLightDot(),

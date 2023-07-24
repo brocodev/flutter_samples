@@ -6,22 +6,22 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: '>=3.0.6 <4.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
   cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.5
+  flutter:
+    sdk: flutter
   fluttericon: ^2.0.0
-  google_fonts: ^4.0.4
+  google_fonts: ^5.1.0
   ui_common:
     path: packages/ui_common/
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^4.0.0+1
+  very_good_analysis: ^5.0.0+1
 
 
 flutter:

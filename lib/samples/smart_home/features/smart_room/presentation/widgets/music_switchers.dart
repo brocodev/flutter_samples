@@ -23,8 +23,8 @@ class MusicSwitchers extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              children: const [
+            const Row(
+              children: [
                 Text('Music'),
                 Spacer(),
                 Icon(Icons.open_in_new_rounded),

@@ -41,7 +41,7 @@ class _AnimatedCounterState extends State<AnimatedCounter> {
 }
 
 class CounterSlider extends StatefulWidget {
-  const CounterSlider({Key? key}) : super(key: key);
+  const CounterSlider({super.key});
 
   @override
   State<CounterSlider> createState() => _CounterSliderState();
@@ -59,7 +59,6 @@ class _CounterSliderState extends State<CounterSlider> {
         height28,
         Slider(
           max: 100,
-          min: 0,
           value: count.toDouble(),
           onChanged: (value) {
             setState(() {

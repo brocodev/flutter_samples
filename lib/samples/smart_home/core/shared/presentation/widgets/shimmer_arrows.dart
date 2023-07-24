@@ -41,8 +41,8 @@ class _ShimmerArrowsState extends State<ShimmerArrows>
         shaderCallback: (bounds) => gradient.createShader(bounds),
         child: child,
       ),
-      child: Column(
-        children: const [
+      child: const Column(
+        children: [
           Align(heightFactor: .4, child: Icon(SHIcons.arrowUp)),
           Align(heightFactor: .4, child: Icon(SHIcons.arrowUp)),
           Align(heightFactor: .4, child: Icon(SHIcons.arrowUp)),

@@ -20,9 +20,9 @@ class AppImageNetwork extends StatelessWidget {
 
   /// Image network with a box shape.
   factory AppImageNetwork.box({
-    Key? key,
     required double size,
     required String? url,
+    Key? key,
     BorderRadius? borderRadius,
     BoxFit fit = BoxFit.cover,
     Widget? loadingIndicator,
@@ -46,9 +46,9 @@ class AppImageNetwork extends StatelessWidget {
 
   /// Image network with a circle shape.
   factory AppImageNetwork.circle({
-    Key? key,
     required double size,
     required String? url,
+    Key? key,
     BoxFit fit = BoxFit.cover,
     Widget? loadingIndicator,
     Color? backgroundColor,

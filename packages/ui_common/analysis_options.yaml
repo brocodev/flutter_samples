@@ -5,7 +5,3 @@ linter:
     avoid_implementing_value_types: false
     flutter_style_todos: false
     sort_pub_dependencies: false
-analyzer:
-  strong-mode:
-    implicit-casts: true
-    implicit-dynamic: true

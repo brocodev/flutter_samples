@@ -75,8 +75,8 @@ class _AirIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconTheme(
       data: IconThemeData(size: 30.sp, color: Colors.white38),
-      child: Row(
-        children: const [
+      child: const Row(
+        children: [
           Icon(SHIcons.snowFlake),
           width8,
           Icon(SHIcons.wind),

@@ -4,7 +4,7 @@ version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: '>=3.0.6 <4.0.0'
 
 dependencies:
   flutter:
@@ -12,13 +12,13 @@ dependencies:
 
   cached_network_image: ^3.2.3
 
-  flutter_screenutil: ^5.6.1
+  flutter_screenutil: ^5.8.4
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^3.1.0
+  very_good_analysis: ^5.0.0+1
 
 flutter:
   uses-material-design: true
