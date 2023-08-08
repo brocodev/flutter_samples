@@ -13,7 +13,7 @@ class LightIntensitySliderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SHCard(
-      childrenPadding: edgeInsetsA12,
+      childrenPadding: 12.edgeInsetsA,
       children: [
         _LightSwitcher(room: room),
         Row(

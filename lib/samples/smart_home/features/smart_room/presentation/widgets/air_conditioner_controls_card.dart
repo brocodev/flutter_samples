@@ -14,7 +14,7 @@ class AirConditionerControlsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SHCard(
-      childrenPadding: edgeInsetsA12,
+      childrenPadding: 12.edgeInsetsA,
       children: [
         _AirSwitcher(room: room),
         const _AirIcons(),
@@ -25,9 +25,9 @@ class AirConditionerControlsCard extends StatelessWidget {
                 Container(
                   width: 120.w,
                   height: 50.h,
-                  margin: edgeInsetsA8,
+                  margin: 8.edgeInsetsA,
                   decoration: BoxDecoration(
-                    borderRadius: borderRadiusA12,
+                    borderRadius: 12.borderRadiusA,
                     border: Border.all(
                       width: 10,
                       color: Colors.white38,

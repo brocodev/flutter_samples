@@ -19,7 +19,7 @@ class ParallaxImageCard extends StatelessWidget {
   // Decoration for image and parallax effect
   // -----------------------------------------------
   BoxDecoration get _parallaxUrlImageDecoration => BoxDecoration(
-        borderRadius: borderRadiusA12,
+        borderRadius: 12.borderRadiusA,
         color: SHColors.hintColor,
         boxShadow: const [
           BoxShadow(
@@ -41,7 +41,7 @@ class ParallaxImageCard extends StatelessWidget {
   // Radial vignette effect decoration
   // -----------------------------------------------
   BoxDecoration get _vignetteDecoration => BoxDecoration(
-        borderRadius: borderRadiusA12,
+        borderRadius: 12.borderRadiusA,
         gradient: const RadialGradient(
           radius: 2,
           colors: [Colors.transparent, Colors.black],

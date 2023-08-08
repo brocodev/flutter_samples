@@ -19,7 +19,7 @@ class BackgroundRoomCard extends StatelessWidget {
       transform: Matrix4.translationValues(0, 80.h * translation, 0),
       decoration: BoxDecoration(
         color: SHColors.cardColor,
-        borderRadius: borderRadiusA12,
+        borderRadius: 12.borderRadiusA,
         boxShadow: const [
           BoxShadow(
             color: Colors.black26,

@@ -122,7 +122,7 @@ class _BottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: edgeInsetsA20,
+      padding: 20.edgeInsetsA,
       child: ValueListenableBuilder<int>(
         valueListenable: roomSelectorNotifier,
         builder: (_, value, child) => AnimatedOpacity(
@@ -139,21 +139,21 @@ class _BottomNavigationBar extends StatelessWidget {
           items: [
             BottomNavigationBarItem(
               icon: Padding(
-                padding: edgeInsetsA8,
+                padding: 8.edgeInsetsA,
                 child: const Icon(SHIcons.lock),
               ),
               label: 'UNLOCK',
             ),
             BottomNavigationBarItem(
               icon: Padding(
-                padding: edgeInsetsA8,
+                padding: 8.edgeInsetsA,
                 child: const Icon(SHIcons.home),
               ),
               label: 'MAIN',
             ),
             BottomNavigationBarItem(
               icon: Padding(
-                padding: edgeInsetsA8,
+                padding: 8.edgeInsetsA,
                 child: const Icon(SHIcons.settings),
               ),
               label: 'SETTINGS',

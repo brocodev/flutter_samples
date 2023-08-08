@@ -46,7 +46,7 @@ class SmartRoomsPageView extends StatelessWidget {
                   duration: kThemeAnimationDuration,
                   curve: Curves.fastOutSlowIn,
                   transform: _getOutTranslate(percent, selected, index),
-                  padding: edgeInsetsH16,
+                  padding: 16.edgeInsetsH,
                   child: RoomCard(
                     percent: percent,
                     expand: isSelected,

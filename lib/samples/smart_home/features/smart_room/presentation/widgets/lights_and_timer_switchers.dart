@@ -13,7 +13,7 @@ class LightsAndTimerSwitchers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SHCard(
-      childrenPadding: edgeInsetsA12,
+      childrenPadding: 12.edgeInsetsA,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

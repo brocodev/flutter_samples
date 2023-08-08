@@ -47,7 +47,7 @@ class RoomDetailsPageView extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                   style: TextButton.styleFrom(
                     alignment: Alignment.centerLeft,
-                    padding: edgeInsetsA8.copyWith(bottom: 0),
+                    padding: 8.edgeInsetsA.copyWith(bottom: 0),
                   ),
                   icon: const Icon(Icons.keyboard_arrow_left),
                   label: const Text('BACK'),
@@ -62,7 +62,7 @@ class RoomDetailsPageView extends StatelessWidget {
                 ),
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
-                  padding: edgeInsetsA20.copyWith(top: 12.h),
+                  padding: 20.edgeInsetsA.copyWith(top: 12.h),
                   children: [
                     SlideTransition(
                       position: Tween(

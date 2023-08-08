@@ -32,7 +32,7 @@ class SHCard extends StatelessWidget {
             offset: Offset(-10, 10),
           )
         ],
-        borderRadius: borderRadiusA12,
+        borderRadius: 12.borderRadiusA,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

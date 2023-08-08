@@ -108,12 +108,12 @@ class AnimatedUpwardArrows extends StatelessWidget {
           const ShimmerArrows(),
           height24,
           Container(
-            margin: edgeInsetsB16,
+            margin: 16.edgeInsetsB,
             height: 4.h,
             width: 0.35.sw,
             decoration: BoxDecoration(
               color: SHColors.textColor,
-              borderRadius: borderRadiusA8,
+              borderRadius: 8.borderRadiusA,
             ),
           ),
         ],
