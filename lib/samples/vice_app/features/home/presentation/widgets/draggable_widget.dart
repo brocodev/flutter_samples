@@ -43,8 +43,9 @@ class _DraggableWidgetState extends State<DraggableWidget>
   // Animation controller when user releases drag without swiping out
   late final AnimationController restoreController;
 
-  // Global key assigned to the child widget's container to retrieve its position on the screen and its size
-  final GlobalKey widgetKey = GlobalKey();
+  // Global key assigned to the child widget's container to retrieve its
+  // position on the screen and its size
+  final GlobalKey _widgetKey = GlobalKey();
 
   // Value of the initial position of the cursor when the user begins dragging
   Offset startOffset = Offset.zero;
@@ -53,7 +54,7 @@ class _DraggableWidgetState extends State<DraggableWidget>
   Offset panOffset = Offset.zero;
 
   // Size of the child widget
-  Size size = const Size(0, 0);
+  Size size = Size.zero;
 
   // Lean angle when dragging
   double angle = 0;
@@ -65,7 +66,7 @@ class _DraggableWidgetState extends State<DraggableWidget>
   // the widget is in
   Offset get currentPosition {
     final renderBox =
-        widgetKey.currentContext?.findRenderObject() as RenderBox?;
+        _widgetKey.currentContext?.findRenderObject() as RenderBox?;
     return renderBox?.localToGlobal(Offset.zero) ?? Offset.zero;
   }
 
@@ -131,7 +132,9 @@ class _DraggableWidgetState extends State<DraggableWidget>
       duration: kThemeAnimationDuration,
     )..addListener(restoreControllerListener);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      size = (widgetKey.currentContext?.findRenderObject() as RenderBox).size;
+      size =
+          (_widgetKey.currentContext?.findRenderObject() as RenderBox?)?.size ??
+              Size.zero;
     });
     super.initState();
   }
@@ -148,7 +151,7 @@ class _DraggableWidgetState extends State<DraggableWidget>
   Widget build(BuildContext context) {
     if (!widget.enableDrag) {
       return Container(
-        key: widgetKey,
+        key: _widgetKey,
         child: widget.child,
       );
     }
@@ -170,7 +173,7 @@ class _DraggableWidgetState extends State<DraggableWidget>
           );
         },
         child: Container(
-          key: widgetKey,
+          key: _widgetKey,
           child: widget.child,
         ),
       ),

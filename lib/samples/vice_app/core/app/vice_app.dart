@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/samples/vice_app/core/core.dart';
+import 'package:flutter_samples/samples/vice_app/features/home/presentation/screens/home_screen.dart';
 import 'package:ui_common/ui_common.dart';
 
-import '../../features/home/presentation/screens/home_screen.dart';
-
 class ViceApp extends StatelessWidget {
-  const ViceApp({Key? key}) : super(key: key);
+  const ViceApp({super.key});
 
   @override
   Widget build(BuildContext context) {

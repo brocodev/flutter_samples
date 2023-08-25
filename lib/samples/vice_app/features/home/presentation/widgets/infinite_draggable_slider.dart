@@ -156,10 +156,10 @@ class _InfiniteDraggableSliderState extends State<InfiniteDraggableSlider>
 
 class _CustomTransform extends StatelessWidget {
   const _CustomTransform({
+    required this.child,
     this.offset = Offset.zero,
     this.angle = 0.0,
     this.scale = 1.0,
-    required this.child,
   });
 
   final Offset offset;

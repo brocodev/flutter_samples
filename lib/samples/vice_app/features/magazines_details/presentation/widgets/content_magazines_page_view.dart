@@ -24,8 +24,8 @@ class _ContentMagazinesPageViewState extends State<ContentMagazinesPageView> {
   void indexListener() {
     controller.animateToPage(
       widget.indexNotifier.value,
-      duration: kThemeChangeDuration,
-      curve: Curves.easeIn,
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.fastOutSlowIn,
     );
   }
 
@@ -49,8 +49,10 @@ class _ContentMagazinesPageViewState extends State<ContentMagazinesPageView> {
       height: sizeWidget?.height ?? 1.sh,
       child: PageView.builder(
         controller: controller,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: widget.magazines.length,
         itemBuilder: (_, index) {
-          final magazine = widget.magazines[index % widget.magazines.length];
+          final magazine = widget.magazines[index];
           return SingleChildScrollView(
             physics: const NeverScrollableScrollPhysics(),
             padding: 20.edgeInsetsH,
@@ -62,17 +64,15 @@ class _ContentMagazinesPageViewState extends State<ContentMagazinesPageView> {
                 children: [
                   height20,
                   for (int x = 0; x < 5; x++) ...[
-                    Text('TITLE TEST ${magazine.id}',
-                        style: context.titleLarge.copyWith(letterSpacing: 2)),
+                    Text(
+                      'TITLE TEST ${magazine.id}',
+                      style: context.titleLarge.copyWith(letterSpacing: 2),
+                    ),
                     height12,
                     Padding(
                       padding: 20.edgeInsetsR,
                       child: Text(
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.'
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.'
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.'
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.'
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.',
+                        magazine.description,
                         style: context.bodyMedium.copyWith(letterSpacing: 1),
                       ),
                     ),
@@ -80,17 +80,16 @@ class _ContentMagazinesPageViewState extends State<ContentMagazinesPageView> {
                     Padding(
                       padding: 20.edgeInsetsR,
                       child: Text(
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.'
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.'
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.'
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.'
-                        'Fidelis, placidus parss aliquando visum de alter, festus medicina.',
+                        magazine.description,
                         style: context.bodyMedium.copyWith(letterSpacing: 1),
                       ),
                     ),
                     height12,
-                    Image.asset(magazine.assetImage,
-                        height: 220, fit: BoxFit.cover),
+                    Image.asset(
+                      magazine.assetImage,
+                      height: 220,
+                      fit: BoxFit.cover,
+                    ),
                     height28,
                   ]
                 ],

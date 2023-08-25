@@ -41,7 +41,7 @@ class MagazinesDetailsScreen extends StatefulWidget {
 class _MagazinesDetailsScreenState extends State<MagazinesDetailsScreen> {
   late final ScrollController scrollController;
   late ValueNotifier<int> indexNotifier;
-  double headerPercent = 0.0;
+  double headerPercent = 0;
 
   void scrollListener() {
     headerPercent = (scrollController.offset / .65.sh).clamp(0, 1);

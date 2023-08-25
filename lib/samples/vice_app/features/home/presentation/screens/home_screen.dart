@@ -181,17 +181,21 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             IconButton(
-                                onPressed: () {},
-                                icon: const Icon(ViceIcons.home)),
+                              onPressed: () {},
+                              icon: const Icon(ViceIcons.home),
+                            ),
                             IconButton(
-                                onPressed: () {},
-                                icon: const Icon(ViceIcons.settings)),
+                              onPressed: () {},
+                              icon: const Icon(ViceIcons.settings),
+                            ),
                             IconButton(
-                                onPressed: () {},
-                                icon: const Icon(ViceIcons.share)),
+                              onPressed: () {},
+                              icon: const Icon(ViceIcons.share),
+                            ),
                             IconButton(
-                                onPressed: () {},
-                                icon: const Icon(ViceIcons.heart)),
+                              onPressed: () {},
+                              icon: const Icon(ViceIcons.heart),
+                            ),
                           ],
                         ),
                       ),
