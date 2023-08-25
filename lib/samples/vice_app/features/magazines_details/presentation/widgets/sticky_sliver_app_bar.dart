@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_samples/samples/vice_app/core/core.dart';
 import 'package:ui_common/ui_common.dart';
 
 class StickySliverAppBar extends StatefulWidget {
@@ -55,58 +56,61 @@ class _StickySliverAppBarState extends State<StickySliverAppBar> {
       pinned: true,
       actions: [
         Expanded(
-          child: PageView.builder(
-            controller: controller,
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (_, index) => Container(
-              padding: 20.edgeInsetsH,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.6, 1],
-                  colors: [
-                    Colors.white,
-                    Colors.white10,
+          child: CustomTweenAnimation(
+            child: PageView.builder(
+              controller: controller,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (_, index) => Container(
+                padding: 20.edgeInsetsH,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.6, 1],
+                    colors: [
+                      Colors.white,
+                      Colors.white10,
+                    ],
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Flexible(
+                      child: FittedBox(
+                        alignment: Alignment(-1 * (1 - widget.sizePercent), 0),
+                        child: Text(
+                          'ISSUE N',
+                          style: context.titleSmall,
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 10,
+                      child: FittedBox(
+                        alignment: Alignment(-1 * (1 - widget.sizePercent), 0),
+                        child: Stack(
+                          children: [
+                            Text(
+                              '${index < 9 ? '0' : ''}${index + 1}',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Positioned.fill(
+                              child: Transform.rotate(
+                                angle: -pi * .1,
+                                child: const Divider(
+                                  color: Colors.black,
+                                  thickness: .3,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Flexible(
-                    child: FittedBox(
-                      alignment: Alignment(-1 * (1 - widget.sizePercent), 0),
-                      child: Text(
-                        'ISSUE N',
-                        style: context.titleSmall,
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 10,
-                    child: FittedBox(
-                      alignment: Alignment(-1 * (1 - widget.sizePercent), 0),
-                      child: Stack(
-                        children: [
-                          Text(
-                            '${index < 9 ? '0' : ''}${index + 1}',
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Positioned.fill(
-                            child: Transform.rotate(
-                              angle: -pi * .1,
-                              child: const Divider(
-                                color: Colors.black,
-                                thickness: .3,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ),
           ),

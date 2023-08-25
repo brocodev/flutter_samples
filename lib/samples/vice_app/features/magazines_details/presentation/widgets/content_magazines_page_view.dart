@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_samples/samples/vice_app/core/shared/domain/entities/magazine.dart';
+import 'package:flutter_samples/samples/vice_app/core/core.dart';
 import 'package:ui_common/ui_common.dart';
 
 class ContentMagazinesPageView extends StatefulWidget {
@@ -45,58 +45,60 @@ class _ContentMagazinesPageViewState extends State<ContentMagazinesPageView> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: sizeWidget?.height ?? 1.sh,
-      child: PageView.builder(
-        controller: controller,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: widget.magazines.length,
-        itemBuilder: (_, index) {
-          final magazine = widget.magazines[index];
-          return SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
-            padding: 20.edgeInsetsH,
-            child: SizeNotifierWidget(
-              onSizeChange: (value) => setState(() => sizeWidget = value),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  height20,
-                  for (int x = 0; x < 5; x++) ...[
-                    Text(
-                      'TITLE TEST ${magazine.id}',
-                      style: context.titleLarge.copyWith(letterSpacing: 2),
-                    ),
-                    height12,
-                    Padding(
-                      padding: 20.edgeInsetsR,
-                      child: Text(
-                        magazine.description,
-                        style: context.bodyMedium.copyWith(letterSpacing: 1),
+    return CustomTweenAnimation(
+      child: SizedBox(
+        height: sizeWidget?.height ?? 1.sh,
+        child: PageView.builder(
+          controller: controller,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: widget.magazines.length,
+          itemBuilder: (_, index) {
+            final magazine = widget.magazines[index];
+            return SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
+              padding: 20.edgeInsetsH,
+              child: SizeNotifierWidget(
+                onSizeChange: (value) => setState(() => sizeWidget = value),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    height20,
+                    for (int x = 0; x < 5; x++) ...[
+                      Text(
+                        'TITLE TEST ${magazine.id}',
+                        style: context.titleLarge.copyWith(letterSpacing: 2),
                       ),
-                    ),
-                    height12,
-                    Padding(
-                      padding: 20.edgeInsetsR,
-                      child: Text(
-                        magazine.description,
-                        style: context.bodyMedium.copyWith(letterSpacing: 1),
+                      height12,
+                      Padding(
+                        padding: 20.edgeInsetsR,
+                        child: Text(
+                          magazine.description,
+                          style: context.bodyMedium.copyWith(letterSpacing: 1),
+                        ),
                       ),
-                    ),
-                    height12,
-                    Image.asset(
-                      magazine.assetImage,
-                      height: 220,
-                      fit: BoxFit.cover,
-                    ),
-                    height28,
-                  ]
-                ],
+                      height12,
+                      Padding(
+                        padding: 20.edgeInsetsR,
+                        child: Text(
+                          magazine.description,
+                          style: context.bodyMedium.copyWith(letterSpacing: 1),
+                        ),
+                      ),
+                      height12,
+                      Image.asset(
+                        magazine.assetImage,
+                        height: 220,
+                        fit: BoxFit.cover,
+                      ),
+                      height28,
+                    ]
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

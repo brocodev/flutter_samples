@@ -130,11 +130,14 @@ class _MagazinesDetailsScreenState extends State<MagazinesDetailsScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    color:
-                        Color.lerp(Colors.white60, Colors.black, headerPercent),
-                    onPressed: () => backToHome(context),
-                    icon: const Icon(ViceIcons.close),
+                  CustomTweenAnimation(
+                    onlyScale: true,
+                    child: IconButton(
+                      color: Color.lerp(
+                          Colors.white60, Colors.black, headerPercent),
+                      onPressed: () => backToHome(context),
+                      icon: const Icon(ViceIcons.close),
+                    ),
                   ),
                   MenuButton(
                     color: Color.lerp(
