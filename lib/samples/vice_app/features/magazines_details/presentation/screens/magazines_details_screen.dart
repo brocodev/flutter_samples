@@ -59,7 +59,7 @@ class _MagazinesDetailsScreenState extends State<MagazinesDetailsScreen> {
       duration: const Duration(milliseconds: 800),
       curve: Curves.decelerate,
     );
-    BackToHomeScreen.push(context);
+    BackToHomeScreen.push(context, indexNotifier.value);
   }
 
   @override

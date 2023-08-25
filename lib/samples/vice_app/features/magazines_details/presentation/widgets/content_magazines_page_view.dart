@@ -61,7 +61,7 @@ class _ContentMagazinesPageViewState extends State<ContentMagazinesPageView> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   height20,
-                  for (int x = 0; x < 2; x++) ...[
+                  for (int x = 0; x < 5; x++) ...[
                     Text('TITLE TEST ${magazine.id}',
                         style: context.titleLarge.copyWith(letterSpacing: 2)),
                     height12,

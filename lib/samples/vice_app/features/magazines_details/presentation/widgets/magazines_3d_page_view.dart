@@ -28,18 +28,12 @@ class MagazinesCube3DPageView extends StatefulWidget {
 class _MagazinesCube3DPageViewState extends State<MagazinesCube3DPageView> {
   late final PageController pageController;
 
-  /// Current card index being displayed
-  late int index;
-
   /// Value in decimals of the page displayed in the [PageView]
   late double page;
 
-  /// Integer value of the page displayed in the [PageView]
-  late int currentPage;
-
   Widget buildCustomHero(_, Animation<double> animation, __, ___, ____) {
     return InfiniteDraggableSlider(
-      index: index,
+      index: page.floor(),
       itemCount: widget.magazines.length,
       shrinkAnimation: Tween<double>(begin: 1, end: 0).animate(animation),
       itemBuilder: (_, index) => MagazineCoverImage(
@@ -51,14 +45,12 @@ class _MagazinesCube3DPageViewState extends State<MagazinesCube3DPageView> {
   void _pageListener() {
     setState(() {
       page = pageController.page ?? 0;
-      currentPage = page.floor();
     });
   }
 
   @override
   void initState() {
-    index = widget.initialIndex;
-    page = index.toDouble();
+    page = widget.initialIndex.toDouble();
     pageController = PageController(initialPage: widget.initialIndex)
       ..addListener(_pageListener);
     super.initState();
@@ -73,15 +65,13 @@ class _MagazinesCube3DPageViewState extends State<MagazinesCube3DPageView> {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
+      itemCount: widget.magazines.length,
       controller: pageController,
-      onPageChanged: (value) {
-        index = value % widget.magazines.length;
-        widget.onPageChanged(index);
-      },
+      onPageChanged: (value) => widget.onPageChanged(value),
       clipBehavior: Clip.none,
       itemBuilder: (_, index) {
-        final magazine = widget.magazines[index % widget.magazines.length];
-        final percent = (index - page);
+        final magazine = widget.magazines[index];
+        final percent = index - page;
         final isComingOut = (index - page) <= 0;
         return Transform(
           alignment: isComingOut ? Alignment.centerRight : Alignment.centerLeft,

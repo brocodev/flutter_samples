@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_samples/samples/vice_app/features/home/presentation/screens/home_screen.dart';
 
 class BackToHomeScreen extends StatefulWidget {
-  const BackToHomeScreen._();
+  const BackToHomeScreen._(this.index);
 
-  static void push(BuildContext context) {
+  final int index;
+
+  static void push(BuildContext context, int index) {
     Navigator.of(context).push<void>(
       PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 400),
@@ -16,7 +18,7 @@ class BackToHomeScreen extends StatefulWidget {
             opacity: animation,
             child: SlideTransition(
               position: offset,
-              child: const BackToHomeScreen._(),
+              child: BackToHomeScreen._(index),
             ),
           );
         },
@@ -40,7 +42,10 @@ class _BackToHomeScreenState extends State<BackToHomeScreen> {
             opacity: animation,
             child: SlideTransition(
               position: offset,
-              child: const HomeScreen(enableEntryAnimation: true),
+              child: HomeScreen(
+                enableEntryAnimation: true,
+                initialIndex: widget.index,
+              ),
             ),
           );
         },
