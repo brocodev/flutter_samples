@@ -26,10 +26,12 @@ class MagazinesCube3DPageView extends StatefulWidget {
 }
 
 class _MagazinesCube3DPageViewState extends State<MagazinesCube3DPageView> {
+  /// Value in decimals of the page displayed in the [PageView]
   late final PageController pageController;
 
-  /// Value in decimals of the page displayed in the [PageView]
   late double page;
+
+  final double rotation = -(math.pi / 180 * 10);
 
   Widget buildCustomHero(_, Animation<double> animation, __, ___, ____) {
     return InfiniteDraggableSlider(
@@ -77,39 +79,28 @@ class _MagazinesCube3DPageViewState extends State<MagazinesCube3DPageView> {
           alignment: isComingOut ? Alignment.centerRight : Alignment.centerLeft,
           transform: Matrix4.identity()
             ..setEntry(3, 2, 0.014)
-            ..rotateY(-(math.pi / 180 * 10) * percent),
+            ..rotateY(rotation * percent),
           child: Stack(
             fit: StackFit.expand,
             children: [
               Positioned.fill(
-                top: -200 * widget.sizePercent + -50,
+                top: -200 * widget.sizePercent,
                 bottom: -400 * widget.sizePercent,
-                child: TweenAnimationBuilder<double>(
-                  duration: const Duration(milliseconds: 600),
-                  curve: Curves.fastOutSlowIn,
-                  tween: Tween(begin: 1, end: 0),
-                  builder: (_, value, child) {
-                    return Transform.translate(
-                      offset: Offset(0, 50 * value),
-                      child: Opacity(opacity: 1 - value, child: child),
-                    );
-                  },
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Image.asset(
-                        magazine.assetImage,
-                        fit: BoxFit.cover,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.asset(
+                      magazine.assetImage,
+                      fit: BoxFit.cover,
+                    ),
+                    ClipRect(
+                      clipBehavior: Clip.antiAlias,
+                      child: BackdropFilter(
+                        filter: ui.ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                        child: const ColoredBox(color: Colors.black26),
                       ),
-                      ClipRect(
-                        clipBehavior: Clip.antiAlias,
-                        child: BackdropFilter(
-                          filter: ui.ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                          child: const ColoredBox(color: Colors.black26),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               Positioned.fill(

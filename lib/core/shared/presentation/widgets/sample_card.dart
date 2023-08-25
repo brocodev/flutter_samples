@@ -84,12 +84,15 @@ class SampleCard extends StatelessWidget {
                               fontSize: 18,
                             ),
                           ),
-                          Text(
-                            sample.description,
-                            maxLines: 1,
-                            style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: 14,
+                          FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              sample.description,
+                              maxLines: 1,
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: 14,
+                              ),
                             ),
                           ),
                         ],
