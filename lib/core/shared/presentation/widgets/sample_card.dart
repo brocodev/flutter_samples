@@ -141,7 +141,7 @@ class SampleCard extends StatelessWidget {
                         ),
                         child: FittedBox(
                           child: Text(
-                            'Open project',
+                            'Open sample',
                             maxLines: 1,
                             softWrap: false,
                             style: GoogleFonts.poppins(

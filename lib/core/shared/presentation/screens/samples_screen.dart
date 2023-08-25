@@ -28,12 +28,12 @@ class SamplesScreen extends StatelessWidget {
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        itemCount: Sample.samples.length,
+        itemCount: Sample.values.length,
         itemBuilder: (_, index) {
-          final sample = Sample.samples[index];
+          final sample = Sample.values[index];
           return SampleCard(
             sample: sample,
-            index: Sample.samples.length - index,
+            index: Sample.values.length - index,
           );
         },
       ),

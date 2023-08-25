@@ -1,0 +1,129 @@
+import 'dart:math' as math;
+import 'dart:ui' as ui;
+
+import 'package:flutter/material.dart';
+import 'package:flutter_samples/samples/vice_app/core/core.dart';
+import 'package:flutter_samples/samples/vice_app/features/home/presentation/widgets/infinite_draggable_slider.dart';
+import 'package:ui_common/ui_common.dart';
+
+class MagazinesCube3DPageView extends StatefulWidget {
+  const MagazinesCube3DPageView({
+    required this.magazines,
+    required this.initialIndex,
+    required this.onPageChanged,
+    required this.sizePercent,
+    super.key,
+  });
+
+  final List<Magazine> magazines;
+  final ValueChanged<int> onPageChanged;
+  final int initialIndex;
+  final double sizePercent;
+
+  @override
+  State<MagazinesCube3DPageView> createState() =>
+      _MagazinesCube3DPageViewState();
+}
+
+class _MagazinesCube3DPageViewState extends State<MagazinesCube3DPageView> {
+  late final PageController pageController;
+
+  /// Current card index being displayed
+  late int index;
+
+  /// Value in decimals of the page displayed in the [PageView]
+  late double page;
+
+  /// Integer value of the page displayed in the [PageView]
+  late int currentPage;
+
+  Widget buildCustomHero(_, Animation<double> animation, __, ___, ____) {
+    return InfiniteDraggableSlider(
+      index: index,
+      itemCount: widget.magazines.length,
+      shrinkAnimation: Tween<double>(begin: 1, end: 0).animate(animation),
+      itemBuilder: (_, index) => MagazineCoverImage(
+        magazine: widget.magazines[index],
+      ),
+    );
+  }
+
+  void _pageListener() {
+    setState(() {
+      page = pageController.page ?? 0;
+      currentPage = page.floor();
+    });
+  }
+
+  @override
+  void initState() {
+    index = widget.initialIndex;
+    page = index.toDouble();
+    pageController = PageController(initialPage: widget.initialIndex)
+      ..addListener(_pageListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView.builder(
+      controller: pageController,
+      onPageChanged: (value) {
+        index = value % widget.magazines.length;
+        widget.onPageChanged(index);
+      },
+      clipBehavior: Clip.none,
+      itemBuilder: (_, index) {
+        final magazine = widget.magazines[index % widget.magazines.length];
+        final percent = (index - page);
+        final isComingOut = (index - page) <= 0;
+        return Transform(
+          alignment: isComingOut ? Alignment.centerRight : Alignment.centerLeft,
+          transform: Matrix4.identity()
+            ..setEntry(3, 2, 0.014)
+            ..rotateY(-(math.pi / 180 * 10) * percent),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Positioned.fill(
+                top: -200 * widget.sizePercent,
+                bottom: -400 * widget.sizePercent,
+                child: Image.asset(
+                  magazine.assetImage,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              ClipRect(
+                clipBehavior: Clip.antiAlias,
+                child: BackdropFilter(
+                  filter: ui.ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                  child: const ColoredBox(color: Colors.black26),
+                ),
+              ),
+              Positioned.fill(
+                top: context.mediaQuery.padding.top,
+                bottom: -.8.sh * widget.sizePercent,
+                child: Center(
+                  child: Hero(
+                    tag: magazine.id,
+                    flightShuttleBuilder: buildCustomHero,
+                    child: MagazineCoverImage(
+                      magazine: magazine,
+                      height: ui.lerpDouble(.35.sh, .25.sh, widget.sizePercent),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}

@@ -18,6 +18,23 @@ extension NumEdgeInsetsExt on num {
   EdgeInsets get edgeInsetsA => EdgeInsets.all(r);
 }
 
+extension NumListEdgeInsetsExt on List<num> {
+  EdgeInsets get edgeInsetsTB {
+    assert(length == 2, 'The list must be have only 2 elements');
+    return EdgeInsets.only(top: this[0].h, bottom: this[1].h);
+  }
+
+  EdgeInsets get edgeInsetsLR {
+    assert(length == 2, 'The list must be have only 2 elements');
+    return EdgeInsets.only(left: this[0].w, right: this[1].w);
+  }
+
+  EdgeInsets get edgeInsetsLTRB {
+    assert(length == 4, 'The list must be have only 4 elements');
+    return EdgeInsets.fromLTRB(this[0].r, this[1].r, this[2].r, this[3].r);
+  }
+}
+
 extension NumBorderRadiusExt on num {
   BorderRadius get borderRadiusT =>
       BorderRadius.vertical(top: Radius.circular(r));
