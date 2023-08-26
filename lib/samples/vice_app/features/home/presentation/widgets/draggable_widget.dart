@@ -62,6 +62,9 @@ class _DraggableWidgetState extends State<DraggableWidget>
   // Value that detects if the user performed a slide out
   bool itWasMadeSlide = false;
 
+  // Width that must be outside the screen for the slide out to take place
+  double get outSizeLimit => size.width * .65;
+
   // Use the global key of the child widget's container to return the position
   // the widget is in
   Offset get currentPosition {
@@ -104,11 +107,11 @@ class _DraggableWidgetState extends State<DraggableWidget>
     if (restoreController.isAnimating) return;
     final velocityX = details.velocity.pixelsPerSecond.dx;
     final positionX = currentPosition.dx;
-    if (velocityX < -1000 || positionX < -150) {
+    if (velocityX < -1000 || positionX < -outSizeLimit) {
       itWasMadeSlide = widget.onSlideOut != null;
       widget.onSlideOut?.call(SlideDirection.left);
     }
-    if (velocityX > 1000 || positionX > 150) {
+    if (velocityX > 1000 || positionX > outSizeLimit) {
       itWasMadeSlide = widget.onSlideOut != null;
       widget.onSlideOut?.call(SlideDirection.right);
     }
@@ -125,6 +128,12 @@ class _DraggableWidgetState extends State<DraggableWidget>
     }
   }
 
+  void getChildSize() {
+    size =
+        (_widgetKey.currentContext?.findRenderObject() as RenderBox?)?.size ??
+            Size.zero;
+  }
+
   @override
   void initState() {
     restoreController = AnimationController(
@@ -132,9 +141,7 @@ class _DraggableWidgetState extends State<DraggableWidget>
       duration: kThemeAnimationDuration,
     )..addListener(restoreControllerListener);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      size =
-          (_widgetKey.currentContext?.findRenderObject() as RenderBox?)?.size ??
-              Size.zero;
+      getChildSize();
     });
     super.initState();
   }
