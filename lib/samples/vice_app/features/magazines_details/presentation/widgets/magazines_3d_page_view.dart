@@ -86,21 +86,16 @@ class _MagazinesCube3DPageViewState extends State<MagazinesCube3DPageView> {
               Positioned.fill(
                 top: -200 * widget.sizePercent,
                 bottom: -400 * widget.sizePercent,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Image.asset(
-                      magazine.assetImage,
-                      fit: BoxFit.cover,
-                    ),
-                    ClipRect(
-                      clipBehavior: Clip.antiAlias,
-                      child: BackdropFilter(
-                        filter: ui.ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                        child: const ColoredBox(color: Colors.black26),
-                      ),
-                    ),
-                  ],
+                child: Image.asset(
+                  magazine.assetImage,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              ClipRect(
+                clipBehavior: Clip.antiAlias,
+                child: BackdropFilter(
+                  filter: ui.ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                  child: const ColoredBox(color: Colors.black26),
                 ),
               ),
               Positioned.fill(
