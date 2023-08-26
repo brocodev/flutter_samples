@@ -19,6 +19,13 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## 2 - Vice App
+ | DraggableSlider, Transform Animations, 3DPageView & Custom Route Transitions |
+ |----------------------|
+ |<img src="https://media4.giphy.com/media/R75sjUl8BJw4dLA7lw/giphy.gif" width="500" >|
+
+### [Design Credits](https://www.instagram.com/p/CG49SrfABgV/?hl=es) <img src="https://i.ibb.co/dK1QRMq/logo-instagram-icon.png"  width="16">
+
 ## 1 - Smart Home App
  | Parallax Effect, Implicit Animations & Custom Hero Transition |
  |----------------------|
@@ -26,9 +33,3 @@ samples, guidance on mobile development, and a full API reference.
 
 ### [Design Credits](https://www.instagram.com/p/B-SrHZTiWMr/?hl=es) <img src="https://i.ibb.co/dK1QRMq/logo-instagram-icon.png"  width="16">
 
-## 2 - Vice App
- | DraggableSlider, Transform Animations, 3DPageView & Custom Route Transitions |
- |----------------------|
- |<img src="https://media4.giphy.com/media/R75sjUl8BJw4dLA7lw/giphy.gif" width="500" >|
-
-### [Design Credits](https://www.instagram.com/p/B-SrHZTiWMr/?hl=es) <img src="https://i.ibb.co/dK1QRMq/logo-instagram-icon.png"  width="16">
