@@ -111,7 +111,7 @@ class _DraggableWidgetState extends State<DraggableWidget>
       itWasMadeSlide = widget.onSlideOut != null;
       widget.onSlideOut?.call(SlideDirection.left);
     }
-    if (velocityX > 1000 || positionX > outSizeLimit) {
+    if (velocityX > 1000 || positionX > (1.sw - outSizeLimit)) {
       itWasMadeSlide = widget.onSlideOut != null;
       widget.onSlideOut?.call(SlideDirection.right);
     }
