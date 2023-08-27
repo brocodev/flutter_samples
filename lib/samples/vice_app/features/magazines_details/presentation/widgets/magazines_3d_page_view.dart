@@ -100,7 +100,7 @@ class _MagazinesCube3DPageViewState extends State<MagazinesCube3DPageView> {
               ),
               Positioned.fill(
                 top: context.mediaQuery.padding.top,
-                bottom: -.8.sh * widget.sizePercent,
+                bottom: -ViceUIConsts.headerHeight * widget.sizePercent,
                 child: Center(
                   child: Hero(
                     tag: magazine.id,

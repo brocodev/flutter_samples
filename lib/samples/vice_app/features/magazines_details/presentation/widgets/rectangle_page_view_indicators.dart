@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_samples/samples/vice_app/core/constants/constants.dart';
 import 'package:ui_common/ui_common.dart';
 
 class RectanglePageViewIndicators extends StatelessWidget {
@@ -19,7 +20,7 @@ class RectanglePageViewIndicators extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned.fill(
       top: null,
-      bottom: lerpDouble(.05.sh, -.65.sh, percent),
+      bottom: lerpDouble(.05.sh, -ViceUIConsts.headerHeight, percent),
       child: ValueListenableBuilder<int>(
         valueListenable: indexNotifier,
         builder: (__, value, _) => Row(

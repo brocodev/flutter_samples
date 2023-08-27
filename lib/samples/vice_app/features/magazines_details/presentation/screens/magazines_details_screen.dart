@@ -44,7 +44,8 @@ class _MagazinesDetailsScreenState extends State<MagazinesDetailsScreen> {
   double headerPercent = 0;
 
   void scrollListener() {
-    headerPercent = (scrollController.offset / .65.sh).clamp(0, 1);
+    headerPercent =
+        (scrollController.offset / ViceUIConsts.headerHeight).clamp(0, 1);
     if (headerPercent < 1) {
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
@@ -95,7 +96,7 @@ class _MagazinesDetailsScreenState extends State<MagazinesDetailsScreen> {
                 SliverPersistentHeader(
                   delegate: BuilderPersistentDelegate(
                     minExtent: 0,
-                    maxExtent: .65.sh,
+                    maxExtent: ViceUIConsts.headerHeight,
                     builder: (percent) => Stack(
                       children: [
                         MagazinesCube3DPageView(
@@ -134,14 +135,20 @@ class _MagazinesDetailsScreenState extends State<MagazinesDetailsScreen> {
                     onlyScale: true,
                     child: IconButton(
                       color: Color.lerp(
-                          Colors.white60, Colors.black, headerPercent),
+                        Colors.white60,
+                        Colors.black,
+                        headerPercent,
+                      ),
                       onPressed: () => backToHome(context),
                       icon: const Icon(ViceIcons.close),
                     ),
                   ),
                   MenuButton(
                     color: Color.lerp(
-                        Colors.white60, Colors.black, headerPercent)!,
+                      Colors.white60,
+                      Colors.black,
+                      headerPercent,
+                    )!,
                   ),
                 ],
               ),

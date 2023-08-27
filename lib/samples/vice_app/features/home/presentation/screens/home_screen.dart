@@ -22,25 +22,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late final AnimationController outAnimationController;
   late final AnimationController entryAnimationController;
-  late final Animation<double> appBarAnimation;
-  late final Animation<double> bodyAnimation;
-  late final Animation<double> listAnimation;
-  late final Animation<double> bottomBarAnimation;
   final List<Magazine> magazines = Magazine.fakeMagazinesValues;
   late int currentIndex;
-
-  void openMagazineDetail(
-    BuildContext context,
-    int index,
-  ) {
-    outAnimationController.reverse();
-    setState(() => currentIndex = index);
-    MagazinesDetailsScreen.push(
-      context,
-      magazines: magazines,
-      index: currentIndex,
-    );
-  }
+  List<Animation<double>> entryAnimations =
+      List.filled(4, const AlwaysStoppedAnimation(1));
 
   @override
   void initState() {
@@ -53,25 +38,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     entryAnimationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1200),
-      value: widget.enableEntryAnimation ? 0 : 1,
-    );
-    appBarAnimation = CurvedAnimation(
-      parent: entryAnimationController,
-      curve: const Interval(0, .4, curve: Curves.fastOutSlowIn),
-    );
-    bodyAnimation = CurvedAnimation(
-      parent: entryAnimationController,
-      curve: const Interval(0, .6, curve: Curves.fastOutSlowIn),
-    );
-    listAnimation = CurvedAnimation(
-      parent: entryAnimationController,
-      curve: const Interval(0, .8, curve: Curves.fastOutSlowIn),
-    );
-    bottomBarAnimation = CurvedAnimation(
-      parent: entryAnimationController,
-      curve: const Interval(0, 1, curve: Curves.fastOutSlowIn),
+      value: 0,
     );
     if (widget.enableEntryAnimation) {
+      entryAnimations = List.generate(
+        4,
+        (index) => CurvedAnimation(
+          parent: entryAnimationController,
+          curve: Interval(0, .2 * (index + 1), curve: Curves.fastOutSlowIn),
+        ),
+      );
       Future.delayed(
         const Duration(milliseconds: 400),
         () => entryAnimationController.forward(),
@@ -87,6 +63,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  void openMagazineDetail(
+    BuildContext context,
+    int index,
+  ) {
+    outAnimationController.reverse();
+    setState(() => currentIndex = index);
+    MagazinesDetailsScreen.push(
+      context,
+      magazines: magazines,
+      index: currentIndex,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -95,16 +84,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         resizeToAvoidBottomInset: false,
         appBar: _AppBar(
           outAnimation: outAnimationController,
-          entryAnimation: appBarAnimation,
+          entryAnimation: entryAnimations[0],
         ),
         body: Column(
           children: [
             height12,
             _EntryOutTransition(
-              entryAnimation: appBarAnimation,
+              entryAnimation: entryAnimations[0],
               outAnimation: outAnimationController,
               entryBeginOffset: const Offset(0, 1),
-              outBeginOffset: const Offset(0, -.5),
+              outBeginOffset: const Offset(0, -1),
               child: Padding(
                 padding: 20.edgeInsetsH,
                 child: const TextField(
@@ -116,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ),
             height20,
             _EntryOutTransition(
-              entryAnimation: appBarAnimation,
+              entryAnimation: entryAnimations[0],
               entryBeginOffset: const Offset(0, 3),
               child: const Text(
                 'THE ARCHIVE',
@@ -129,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             height12,
             Expanded(
               child: _EntryOutTransition(
-                entryAnimation: bodyAnimation,
+                entryAnimation: entryAnimations[1],
                 entryBeginOffset: const Offset(0, .2),
                 child: Hero(
                   tag: magazines[currentIndex].id,
@@ -146,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ),
             height52,
             _EntryOutTransition(
-              entryAnimation: listAnimation,
+              entryAnimation: entryAnimations[2],
               outAnimation: outAnimationController,
               entryBeginOffset: const Offset(0, .5),
               outBeginOffset: const Offset(0, .5),
@@ -159,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ],
         ),
         bottomNavigationBar: _EntryOutTransition(
-          entryAnimation: bottomBarAnimation,
+          entryAnimation: entryAnimations[3],
           outAnimation: outAnimationController,
           entryBeginOffset: const Offset(0, .8),
           outBeginOffset: const Offset(0, .8),
@@ -199,7 +188,7 @@ class _EntryOutTransition extends StatelessWidget {
   const _EntryOutTransition({
     required this.child,
     required this.entryAnimation,
-    this.outAnimation = const AlwaysStoppedAnimation(0),
+    this.outAnimation = const AlwaysStoppedAnimation(1),
     this.entryBeginOffset = Offset.zero,
     this.outBeginOffset = Offset.zero,
   });
@@ -216,7 +205,7 @@ class _EntryOutTransition extends StatelessWidget {
       position:
           Tween(begin: outBeginOffset, end: Offset.zero).animate(outAnimation),
       child: FadeTransition(
-        opacity: entryAnimation,
+        opacity: outAnimation,
         child: SlideTransition(
           position: Tween(begin: entryBeginOffset, end: Offset.zero)
               .animate(entryAnimation),
@@ -243,7 +232,7 @@ class _AppBar extends StatelessWidget implements PreferredSize {
       title: _EntryOutTransition(
         entryAnimation: entryAnimation,
         outAnimation: outAnimation,
-        entryBeginOffset: const Offset(0, 1),
+        entryBeginOffset: const Offset(0, 2),
         outBeginOffset: const Offset(0, -1),
         child: Image.asset(
           'assets/img/vice/vice-logo.png',
