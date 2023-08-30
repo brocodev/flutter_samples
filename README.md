@@ -2,6 +2,20 @@
 
 This is a project created to develop sample apps and widgets developed with flutter.
 
+## 2 - Vice App
+ | DraggableSlider, Transform Animations, 3DPageView & Custom Route Transitions |
+ |----------------------|
+ |<img src="https://media4.giphy.com/media/R75sjUl8BJw4dLA7lw/giphy.gif" width="500" >|
+
+### [Design Credits](https://www.instagram.com/p/CG49SrfABgV/?hl=es) <img src="https://i.ibb.co/dK1QRMq/logo-instagram-icon.png"  width="16">
+
+## 1 - Smart Home App
+ | Parallax Effect, Implicit Animations & Custom Hero Transition |
+ |----------------------|
+ |<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzIxZjUxYzg1MTY1MTYyOTFjZGI5YjJmNGE0ZmU1N2RmNTc5NGM0OCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/XyBxnyCPsXYMNshv7J/giphy.gif" width="500" >|
+
+### [Design Credits](https://www.instagram.com/p/B-SrHZTiWMr/?hl=es) <img src="https://i.ibb.co/dK1QRMq/logo-instagram-icon.png"  width="16">
+
 # My Social Media
 
 #### <img src="https://i.ibb.co/Js7Gh5N/youtube.png" height="12"/>   [Youtube](https://www.youtube.com/channel/UCe2G2ZkcHG9TliZ03L14U7g) <img src="https://i.ibb.co/c8JfWMM/facebook.png" height="12"/>   [Facebook](https://www.facebook.com/brocodev)  <img src="https://i.ibb.co/MSN1F6L/gorjeo.png" height="12"/>   [Twitter](https://twitter.com/brocodev1)
@@ -18,18 +32,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-
-## 2 - Vice App
- | DraggableSlider, Transform Animations, 3DPageView & Custom Route Transitions |
- |----------------------|
- |<img src="https://media4.giphy.com/media/R75sjUl8BJw4dLA7lw/giphy.gif" width="500" >|
-
-### [Design Credits](https://www.instagram.com/p/CG49SrfABgV/?hl=es) <img src="https://i.ibb.co/dK1QRMq/logo-instagram-icon.png"  width="16">
-
-## 1 - Smart Home App
- | Parallax Effect, Implicit Animations & Custom Hero Transition |
- |----------------------|
- |<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzIxZjUxYzg1MTY1MTYyOTFjZGI5YjJmNGE0ZmU1N2RmNTc5NGM0OCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/XyBxnyCPsXYMNshv7J/giphy.gif" width="500" >|
-
-### [Design Credits](https://www.instagram.com/p/B-SrHZTiWMr/?hl=es) <img src="https://i.ibb.co/dK1QRMq/logo-instagram-icon.png"  width="16">
-
