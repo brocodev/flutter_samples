@@ -25,6 +25,26 @@ extension ContextExt on BuildContext {
   }
 }
 
+extension ContextNavigatorExt on BuildContext {
+  Future<T?> push<T extends Object?>(Route<T> route) => navigator.push(route);
+
+  Future<T?> pushAndRemoveUntil<T extends Object?>(
+    Route<T> route,
+    RoutePredicate predicate,
+  ) =>
+      navigator.pushAndRemoveUntil(route, predicate);
+
+  Future<T?> pushReplacement<T extends Object?, TO extends Object?>(
+    Route<T> newRoute, {
+    TO? result,
+  }) =>
+      navigator.pushReplacement(newRoute, result: result);
+
+  void pop<T extends Object?>([T? result]) => navigator.pop(result);
+
+  void popUntil(RoutePredicate predicate) => navigator.popUntil(predicate);
+}
+
 extension ContextThemeColors on BuildContext {
   Color get textColor => Theme.of(this).textTheme.bodyLarge!.color!;
 
