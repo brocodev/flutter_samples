@@ -156,12 +156,8 @@ class _DraggableWidgetState extends State<DraggableWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (!widget.enableDrag) {
-      return Container(
-        key: _widgetKey,
-        child: widget.child,
-      );
-    }
+    final child = SizedBox(key: _widgetKey, child: widget.child);
+    if (!widget.enableDrag) return child;
     return GestureDetector(
       onTap: widget.onPressed,
       onPanStart: onPanStart,
@@ -179,10 +175,7 @@ class _DraggableWidgetState extends State<DraggableWidget>
             ),
           );
         },
-        child: Container(
-          key: _widgetKey,
-          child: widget.child,
-        ),
+        child: child,
       ),
     );
   }

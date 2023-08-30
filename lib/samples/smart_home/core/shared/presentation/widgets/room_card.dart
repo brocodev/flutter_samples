@@ -45,44 +45,46 @@ class RoomCard extends StatelessWidget {
           // -----------------------------------------------
           // Room image card with parallax effect
           // -----------------------------------------------
-          Container(
-            transform: Matrix4.translationValues(0, -80.h * value, 0),
-            padding: EdgeInsets.only(bottom: 160.h),
-            child: GestureDetector(
-              onTap: onTap,
-              onVerticalDragUpdate: (details) {
-                if (details.primaryDelta! < -10) onSwipeUp();
-                if (details.primaryDelta! > 10) onSwipeDown();
-              },
-              child: Hero(
-                tag: room.id,
-                // -----------------------------------------------
-                // Custom hero widget
-                // -----------------------------------------------
-                flightShuttleBuilder: (_, animation, __, ___, ____) {
-                  return AnimatedBuilder(
-                    animation: animation,
-                    builder: (context, _) => Material(
-                      type: MaterialType.transparency,
-                      child: RoomDetailItems(
-                        animation: animation,
-                        topPadding: context.mediaQuery.padding.top,
-                        room: room,
-                      ),
-                    ),
-                  );
+          Padding(
+            padding: 160.edgeInsetsB,
+            child: Transform(
+              transform: Matrix4.translationValues(0, -80.h * value, 0),
+              child: GestureDetector(
+                onTap: onTap,
+                onVerticalDragUpdate: (details) {
+                  if (details.primaryDelta! < -10) onSwipeUp();
+                  if (details.primaryDelta! > 10) onSwipeDown();
                 },
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ParallaxImageCard(
-                      imageUrl: room.imageUrl,
-                      parallaxValue: percent,
-                    ),
-                    VerticalRoomTitle(room: room),
-                    const CameraIconButton(),
-                    const AnimatedUpwardArrows()
-                  ],
+                child: Hero(
+                  tag: room.id,
+                  // -----------------------------------------------
+                  // Custom hero widget
+                  // -----------------------------------------------
+                  flightShuttleBuilder: (_, animation, __, ___, ____) {
+                    return AnimatedBuilder(
+                      animation: animation,
+                      builder: (context, _) => Material(
+                        type: MaterialType.transparency,
+                        child: RoomDetailItems(
+                          animation: animation,
+                          topPadding: context.mediaQuery.padding.top,
+                          room: room,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      ParallaxImageCard(
+                        imageUrl: room.imageUrl,
+                        parallaxValue: percent,
+                      ),
+                      VerticalRoomTitle(room: room),
+                      const CameraIconButton(),
+                      const AnimatedUpwardArrows()
+                    ],
+                  ),
                 ),
               ),
             ),

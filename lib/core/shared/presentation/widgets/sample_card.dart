@@ -53,19 +53,21 @@ class SampleCard extends StatelessWidget {
                   children: [
                     Opacity(
                       opacity: .6,
-                      child: Container(
-                        padding: const EdgeInsets.all(14),
+                      child: DecoratedBox(
                         decoration: BoxDecoration(
                           color: Colors.white,
                           shape: BoxShape.circle,
                           border: Border.all(width: 4),
                         ),
-                        child: Text(
-                          '$index',
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.black,
+                        child: Padding(
+                          padding: const EdgeInsets.all(14),
+                          child: Text(
+                            '$index',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ),

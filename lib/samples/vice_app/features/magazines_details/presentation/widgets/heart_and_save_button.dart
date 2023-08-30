@@ -23,25 +23,29 @@ class HeartAndSaveButtons extends StatelessWidget {
       right: 24.w,
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: height,
             width: width,
-            color: Colors.black,
-            child: FittedBox(
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(ViceIcons.heart, color: Colors.white),
+            child: ColoredBox(
+              color: Colors.black,
+              child: FittedBox(
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(ViceIcons.heart, color: Colors.white),
+                ),
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: height,
             width: width,
-            color: Colors.green.shade500,
-            child: FittedBox(
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(ViceIcons.save, color: Colors.white),
+            child: ColoredBox(
+              color: Colors.green.shade500,
+              child: FittedBox(
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(ViceIcons.save, color: Colors.white),
+                ),
               ),
             ),
           ),

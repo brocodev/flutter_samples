@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return DecoratedBox(
       decoration: ViceUIConsts.gradientDecoration,
       child: Scaffold(
         resizeToAvoidBottomInset: false,

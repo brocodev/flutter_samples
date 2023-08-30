@@ -15,69 +15,71 @@ class BackgroundRoomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Transform(
       transform: Matrix4.translationValues(0, 80.h * translation, 0),
-      decoration: BoxDecoration(
-        color: SHColors.cardColor,
-        borderRadius: 12.borderRadiusA,
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 12,
-            offset: Offset(-7, 7),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _RoomInfoRow(
-            icon: const Icon(SHIcons.thermostat),
-            label: const Text('Temperature'),
-            data: '${room.temperature}°',
-          ),
-          height4,
-          _RoomInfoRow(
-            icon: const Icon(SHIcons.waterDrop),
-            label: const Text('Air Humidity'),
-            data: '${room.airHumidity}%',
-          ),
-          height4,
-          const _RoomInfoRow(
-            icon: Icon(SHIcons.timer),
-            label: Text('Timer'),
-            data: null,
-          ),
-          height12,
-          const SHDivider(),
-          Padding(
-            padding: EdgeInsets.all(12.sp),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _DeviceIconSwitcher(
-                  onTap: (value) {},
-                  icon: const Icon(SHIcons.lightBulbOutline),
-                  label: const Text('Lights'),
-                  value: room.lights.isOn,
-                ),
-                _DeviceIconSwitcher(
-                  onTap: (value) {},
-                  icon: const Icon(SHIcons.fan),
-                  label: const Text('Air-conditioning'),
-                  value: room.airCondition.isOn,
-                ),
-                _DeviceIconSwitcher(
-                  onTap: (value) {},
-                  icon: const Icon(SHIcons.music),
-                  label: const Text('Music'),
-                  value: room.musicInfo.isOn,
-                ),
-              ],
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: SHColors.cardColor,
+          borderRadius: 12.borderRadiusA,
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 12,
+              offset: Offset(-7, 7),
             ),
-          ),
-        ],
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _RoomInfoRow(
+              icon: const Icon(SHIcons.thermostat),
+              label: const Text('Temperature'),
+              data: '${room.temperature}°',
+            ),
+            height4,
+            _RoomInfoRow(
+              icon: const Icon(SHIcons.waterDrop),
+              label: const Text('Air Humidity'),
+              data: '${room.airHumidity}%',
+            ),
+            height4,
+            const _RoomInfoRow(
+              icon: Icon(SHIcons.timer),
+              label: Text('Timer'),
+              data: null,
+            ),
+            height12,
+            const SHDivider(),
+            Padding(
+              padding: EdgeInsets.all(12.sp),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _DeviceIconSwitcher(
+                    onTap: (value) {},
+                    icon: const Icon(SHIcons.lightBulbOutline),
+                    label: const Text('Lights'),
+                    value: room.lights.isOn,
+                  ),
+                  _DeviceIconSwitcher(
+                    onTap: (value) {},
+                    icon: const Icon(SHIcons.fan),
+                    label: const Text('Air-conditioning'),
+                    value: room.airCondition.isOn,
+                  ),
+                  _DeviceIconSwitcher(
+                    onTap: (value) {},
+                    icon: const Icon(SHIcons.music),
+                    label: const Text('Music'),
+                    value: room.musicInfo.isOn,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

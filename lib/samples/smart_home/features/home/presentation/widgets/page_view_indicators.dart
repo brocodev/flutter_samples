@@ -47,13 +47,15 @@ class _BorderDot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 12.w,
       height: 12.w,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.orange, width: 2.5),
-        color: SHColors.backgroundColor,
-        shape: BoxShape.circle,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.orange, width: 2.5),
+          color: SHColors.backgroundColor,
+          shape: BoxShape.circle,
+        ),
       ),
     );
   }
@@ -64,12 +66,14 @@ class _Dot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 6.w,
       height: 6.w,
-      decoration: const BoxDecoration(
-        color: SHColors.hintColor,
-        shape: BoxShape.circle,
+      child: const DecoratedBox(
+        decoration: BoxDecoration(
+          color: SHColors.hintColor,
+          shape: BoxShape.circle,
+        ),
       ),
     );
   }

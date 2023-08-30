@@ -41,7 +41,7 @@ class _SizeNotifierWidgetState extends State<SizeNotifierWidget> {
         return true;
       },
       child: SizeChangedLayoutNotifier(
-        child: Container(
+        child: SizedBox(
           key: _widgetKey,
           child: widget.child,
         ),

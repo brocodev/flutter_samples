@@ -17,34 +17,36 @@ class SHCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: height,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: SHColors.cardColors,
-        ),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black38,
-            blurRadius: 20,
-            offset: Offset(-10, 10),
-          )
-        ],
-        borderRadius: 12.borderRadiusA,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          for (int index = 0; index < children.length; index++) ...[
-            Padding(
-              padding: childrenPadding,
-              child: children[index],
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: SHColors.cardColors,
+          ),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black38,
+              blurRadius: 20,
+              offset: Offset(-10, 10),
             ),
-            if (index < children.length - 1) const SHDivider(),
-          ]
-        ],
+          ],
+          borderRadius: 12.borderRadiusA,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (int index = 0; index < children.length; index++) ...[
+              Padding(
+                padding: childrenPadding,
+                child: children[index],
+              ),
+              if (index < children.length - 1) const SHDivider(),
+            ],
+          ],
+        ),
       ),
     );
   }
