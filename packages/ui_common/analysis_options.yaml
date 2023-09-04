@@ -1,7 +1,0 @@
-include: package:very_good_analysis/analysis_options.yaml
-linter:
-  rules:
-    public_member_api_docs: false
-    avoid_implementing_value_types: false
-    flutter_style_todos: false
-    sort_pub_dependencies: false

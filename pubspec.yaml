@@ -10,18 +10,18 @@ environment:
 
 dependencies:
   cached_network_image: ^3.2.3
-  cupertino_icons: ^1.0.5
+  cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
   fluttericon: ^2.0.0
   google_fonts: ^5.1.0
   ui_common:
-    path: packages/ui_common/
+    git: https://github.com/brocodev/ui_common.git
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^5.0.0+1
+  very_good_analysis: ^5.1.0
 
 
 flutter:
